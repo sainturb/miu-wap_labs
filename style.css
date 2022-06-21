@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'SF-Pro';
+  src: url('fonts/SF-Pro-Display-Bold.otf');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SF-Pro';
+  src: url('fonts/SF-Pro-Display-Medium.otf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SF-Pro';
+  src: url('fonts/SF-Pro-Display-Regular.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SF-Pro';
+  src: url('fonts/SF-Pro-Display-Light.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SF-Pro';
+  src: url('fonts/SF-Pro-Display-Thin.otf');
+  font-weight: 400;
+}
+
+
+@font-face {
+  font-family: 'SF-Pro';
+  src: url('fonts/SF-Pro-Display-UltraLight.otf');
+  font-weight: 300;
+}
+
+
+html, body {
+  font-family: 'SF-Pro', Roboto;
+  color: #2d2d2d;
+  overflow: hidden;
+}
+.avatar {
+  border-radius: 36px;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  margin: auto;
+  margin-right: 8px;
+}
+.name-section {
+  display: inline-flex;
+  align-items: center;
+}
+.name-section h3 {
+  margin: 0;
+}
+.body {
+  display: inline-flex;
+  max-width: 1336px;
+  position: relative;
+  overflow: hidden;
+}
+sidebar {
+  min-width: 300px;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+sidebar ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.main-body:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  border-radius: 1px;
+  background-color: #ececec;
+  height: 100%;
+  display: block;
+  content: '';
+}
+.main-body {
+  padding: 16px;
+  min-height: 360px;
+  position: relative;
+  overflow: auto;
+}
