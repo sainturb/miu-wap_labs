@@ -40,9 +40,12 @@ html, body {
   font-family: 'SF-Pro', Roboto;
   color: #2d2d2d;
   overflow: hidden;
-  font-weight: 600;
+  font-weight: 500;
   height: 100%;
   width: 100%;
+}
+small {
+  color: #7c7c7c;
 }
 .avatar {
   border-radius: 36px;
@@ -104,6 +107,15 @@ html, body {
   overflow: auto;
   width: 100%;
 }
+
+.classes {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.classes li {
+  padding: 8px 0;
+}
 .movies {
   width: 100%;
   list-style-type: none;
@@ -123,11 +135,51 @@ html, body {
 
 }
 
-.movies li img {
+.movies li img.cover {
   object-fit: cover;
   width: 100%;
   overflow: hidden;
   height: 320px;
   min-height: 320px;
   border-radius: 12px;
+}
+.movies li a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  color: #909090;
+  letter-spacing: 1px;
+}
+.movies li a > strong {
+  font-weight: 700;
+  color: #4f4f4f;
+
+}
+.imdb {
+  width: 36px;
+  margin-left: 4px;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.inline-flex ol {
+  margin-left: 16px;
+  padding: 0;
+}
+.inline-item {
+  min-width: 250px;
+}
+.scrollable-area {
+  max-height: 120px;
+  overflow: auto;
+}
+.rotated {
+  transform: rotate(180deg);
+}
+.rotated li {
+  transform: rotate(180deg);
+}
+.reverse-column {
+  display: flex;
+  flex-direction: column-reverse;
 }

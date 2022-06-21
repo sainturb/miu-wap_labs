@@ -18,6 +18,7 @@
        </div>
       </div>
       <ul>
+        <li><a href="index.html">&lt;&lt; back</a></li>
         <li><a href="#about-me">About me</a></li>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#movies">Movies</a></li>
@@ -26,33 +27,95 @@
     <div class="main-body">
       <h1 id="about-me">About me</h1>
       <p>
-        I am Saintur, from Mongolia.
+        I am <strong>Saintur</strong>, from <strong>Mongolia</strong>.
       </p>
       <h1 id="classes">Classes</h1>
       <ul class="classes">
-        
+        <li title="July block"><strong>CS472</strong> - Web Programming</li>
+        <li title="August block"><strong>CS545</strong> - Web Application Architecture</li>
+        <li title="September block"><strong>CS590</strong> - Software Architecture</li>
+        <li title="October block"><strong>CS452</strong> - Modern Web Applications</li>
       </ul>
       <h1 id="movies">Movies</h1>
       <ul class="movies">
         <li>
-          <div>
-            <img src="1.jpeg" alt="Inception"/>
-          </div>
-          <h3>Inception</h3>
+          <img class="cover" src="1.jpeg" alt="Inception"/>
+          <h3>Inception (2010) 
+          </h3>
+          <a href="https://www.imdb.com/title/tt1375666/" target="_blank">
+            <strong>8.6</strong>/10
+            <img class="imdb" src="imdb.png" alt="Inception"/>
+          </a>
         </li>
         <li>
-          <div>
-            <img src="2.jpg" alt="Interstellar"/>
-          </div>
-          <h3>Interstellar</h3>
+          <img class="cover" src="2.jpg" alt="Interstellar"/>
+          <h3>Interstellar (2014)</h3>
+          <a href="https://www.imdb.com/title/tt0816692/" target="_blank">
+            <strong>8.6</strong>/10
+            <img class="imdb" src="imdb.png" alt="Inception"/>
+          </a>
         </li>
         <li>
-          <div>
-            <img src="3.jpg" alt="Swan Song"/>
-          </div>
-          <h3>Swan Song</h3>
+          <img class="cover" src="3.jpg" alt="Swan Song"/>
+          <h3>Swan Song (2021)</h3>
+          <a href="https://www.imdb.com/title/tt13207508/" target="_blank">
+            <strong>6.8</strong>/10
+            <img class="imdb" src="imdb.png" alt="Inception"/>
+          </a>
         </li>
       </ul>
+
+      <h1 id="reverse">Reverse order</h1>
+      <div class="inline-flex">
+        <div class="inline-item">
+          <h2>Order reverse tag</h2>
+          <div class="scrollable-area">
+            <ol reversed>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+              <li>Item 5</li>
+              <li>Item 6</li>
+              <li>Item 7</li>
+              <li>Item 8</li>
+              <li>Item 9</li>
+            </ol>
+          </div>
+        </div>
+        <div class="inline-item">
+          <h2>Order rotate 180deg</h2>
+          <div class="scrollable-area">
+            <ol class="rotated">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+              <li>Item 5</li>
+              <li>Item 6</li>
+              <li>Item 7</li>
+              <li>Item 8</li>
+              <li>Item 9</li>
+            </ol>
+          </div>
+        </div>
+        <div class="inline-item">
+          <h2>Order reverse column</h2>
+          <div class="scrollable-area">
+            <ol class="reverse-column">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+              <li>Item 5</li>
+              <li>Item 6</li>
+              <li>Item 7</li>
+              <li>Item 8</li>
+              <li>Item 9</li>
+            </ol>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

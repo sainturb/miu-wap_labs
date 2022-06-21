@@ -40,9 +40,12 @@ html, body {
   font-family: 'SF-Pro', Roboto;
   color: #2d2d2d;
   overflow: hidden;
-  font-weight: 600;
+  font-weight: 500;
   height: 100%;
   width: 100%;
+}
+small {
+  color: #7c7c7c;
 }
 .avatar {
   border-radius: 36px;
