@@ -44,6 +44,7 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
 small {
   color: #7c7c7c;
 }
@@ -93,6 +94,9 @@ small {
 .sidebar ul li a {
   text-decoration: none;
   color: inherit;
+}
+.sidebar ul li a:hover {
+  color: rgb(26, 90, 169);
 }
 /* .main-body:before {
   position: absolute;

@@ -94,6 +94,9 @@ small {
   text-decoration: none;
   color: inherit;
 }
+.sidebar ul li a:hover {
+  color: rgb(26, 90, 169);
+}
 /* .main-body:before {
   position: absolute;
   top: 0;
