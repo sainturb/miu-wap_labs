@@ -63,22 +63,22 @@ html, body {
   position: relative;
   overflow: hidden;
 }
-sidebar {
+.sidebar {
   min-width: 300px;
   padding: 16px;
   position: sticky;
   top: 0;
   overflow: hidden;
 }
-sidebar ul {
+.sidebar ul {
   list-style-type: none;
   margin-left: 0;
   padding-left: 0;
 }
-sidebar ul li {
+.sidebar ul li {
   padding: 4px;
 }
-sidebar ul li a {
+.sidebar ul li a {
   text-decoration: none;
   color: inherit;
 }
