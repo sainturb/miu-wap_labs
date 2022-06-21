@@ -192,8 +192,10 @@ small {
 .rotated {
   transform: rotate(180deg);
 }
-.rotated li {
+.rotated ul {
   transform: rotate(180deg);
+  list-style-type: decimal;
+  margin: 0;
 }
 .reverse-column {
   display: flex;
