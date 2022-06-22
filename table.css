@@ -16,7 +16,7 @@
 
 .header a {
   justify-content: space-evenly;
-  color: white;
+  color: inherit;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
