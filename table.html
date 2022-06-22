@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="table.css" />
+
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>Welcome </div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <caption>Product list</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Node.js</td>
+          <td>9.99</td>
+          <td>5</td>
+          <td><button>Add</button></td>
+        </tr>
+        <tr>
+          <td>React</td>
+          <td>19.99</td>
+          <td>9</td>
+          <td><button>Add</button></td>
+        </tr>
+        <tr>
+          <td>Angular</td>
+          <td>29.99</td>
+          <td>13</td>
+          <td><button>Add</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <caption>Your shopping cart</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Node.js</td>
+          <td>9.99</td>
+          <td>9.99</td>
+          <td><div class="action-number">
+            <button>-</button>
+            <input  value="1"/>
+            <button>+</button>
+          </div></td>
+        </tr>
+        <tr>
+          <td>React</td>
+          <td>19.99</td>
+          <td>19.99</td>
+          <td><div class="action-number">
+            <button>-</button>
+            <input value="1" />
+            <button>+</button>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Angular</td>
+          <td>29.99</td>
+          <td>29.99</td>
+          <td><div class="action-number">
+            <button>-</button>
+            <input value="1" />
+            <button>+</button>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bottom-action">
+      <button>Place order</button>
+    </div>
+  </div>
+  <div class="validation">
+    <a href="https://validator.w3.org/nu/?doc=https://sainturb.github.io/wap/table.html" target="_blank">
+      <img width="64" src="HTML-checker.png" alt="html validator"/>
+    </a>
+    <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://sainturb.github.io/wap/table.html" target="_blank">
+      <img width="64" src="CSS-checker.png" alt="css validator"/>
+    </a>
+  </div>
+</body>
+
+</html>
