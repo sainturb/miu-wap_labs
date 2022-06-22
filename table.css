@@ -42,6 +42,8 @@ button {
   display: block; 
   max-width: 640px;
   margin: auto;
+  overflow: auto;
+  padding: 12px;
 }
 .action-number {
   display: inline-flex;
