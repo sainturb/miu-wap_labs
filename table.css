@@ -98,13 +98,21 @@ table tr td {
   line-height: 42px;
   border: 1px solid rgba(10, 10, 10, 0.1);
 }
-
+.total-price {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: calc(100% - 24px);
+  padding: 0 12px;
+}
 .bottom-action {
   height: 64px;
-  display: inline-flex;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  max-width: 654px;
+  margin: auto;
 }
 
 .validation {
