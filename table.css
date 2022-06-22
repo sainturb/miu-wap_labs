@@ -23,7 +23,11 @@
   min-width: 72px;
   text-align: center;
 }
-
+.content {
+  height: calc(100% - 64px);
+  overflow: auto;
+  padding: 0 12px;
+}
 button {
   user-select: none;
   cursor: pointer;
@@ -37,13 +41,17 @@ button {
   color: inherit;
 }
 
+button:hover {
+  background: linear-gradient(rgb(85, 155, 240), rgb(32, 115, 216));
+  color: white;
+}
+
 .table-wrapper {
   width: 100%;
   display: block; 
-  max-width: 640px;
+  max-width: 664px;
   margin: auto;
-  overflow: auto;
-  padding: 12px;
+  overflow-x: auto;
 }
 .action-number {
   display: inline-flex;
@@ -74,8 +82,8 @@ table {
   max-width: 640px;
   margin: auto;
   text-align: center;
-  border: 1px solid rgba(10, 10, 10, 0.3);
-  background-color: rgba(120, 120, 120, 0.1);
+  border: 1px solid rgba(10, 10, 10, 0.1);
+  background-color: rgba(120, 120, 120, 0.05);
   border-collapse: collapse;
 }
 table caption {
@@ -88,7 +96,7 @@ table tr th,
 table tr td {
   min-width: 160px;
   line-height: 42px;
-  border: 1px solid rgba(10, 10, 10, 0.3);
+  border: 1px solid rgba(10, 10, 10, 0.1);
 }
 
 .bottom-action {
