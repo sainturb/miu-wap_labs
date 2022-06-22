@@ -45,6 +45,13 @@ html, body {
   width: 100%;
 }
 
+@media (prefers-color-scheme: dark) {
+  html, body { 
+    background: #2d2d2d;
+    color: #ffffff;
+  }
+}
+
 small {
   color: #7c7c7c;
 }
