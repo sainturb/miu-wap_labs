@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="form.css" />
+
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>Form</div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <div>
+      <h4>Workshop Registration</h4>
+    </div>
+    <form action="#" method="get">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-item">
+            <label>
+              Firstname <span class="required">*</span>
+            </label>
+            <input name="firstname" minlength="2" required/>
+          </div>
+          <div class="form-item">
+            <label>
+              Lastname <span class="required">*</span>
+            </label>
+            <input name="lastname" minlength="2" required/>
+          </div>
+          <div class="form-item">
+            <label>
+              Company/Institution <span class="required">*</span>
+            </label>
+            <input name="company" minlength="2" required/>
+          </div>
+          <div class="form-item">
+            <label>
+              Address
+            </label>
+            <textarea name="address" required rows="4"></textarea>
+          </div>
+          <div class="form-item">
+            <label>
+              City
+            </label>
+            <input name="city" required/>
+          </div>
+          <div class="form-item">
+            <label>
+              State
+            </label>
+            <select name="state" required>
+              <option value="IOWA">IA</option>
+            </select>
+          </div>
+          <div class="form-item">
+            <label>
+              Country
+            </label>
+            <select name="country" required>
+              <option value="us">United States</option>
+            </select>
+          </div>
+          <div class="form-item">
+            <label>
+              Email <span class="required"></span>
+            </label>
+            <input type="email" name="email" required/>
+          </div>
+          <div class="form-item">
+            <label>
+              Phone Number <span class="required"></span>
+            </label>
+            <input name="phoneNumber" pattern="\d{3}\-\d{3}\-\d{4}" required/>
+          </div>
+        </div>
+        <div class="col-6">
+          <h5>Lunch</h5>
+          <div class="form-item">
+            <label>Meal Preference</label>
+            <select name="meal">
+              <option>Vegererian</option>
+              <option>Non-Vegererian</option>
+            </select>
+          </div>
+          <h5>Payment Details</h5>
+          <div class="form-item">
+            <label>Payment Method</label>
+            <div class="column">
+              <label class="inline-label" for="cash">
+                <input id="cash" name="paymentMethod" type="checkbox"/> Cash
+              </label>
+              <label class="inline-label" for="cheque">
+                <input id="cheque" name="paymentMethod" type="checkbox"/> Cheque
+              </label>
+              <label class="inline-label" for="draft">
+                <input id="draft" name="paymentMethod" type="checkbox"/> Demand Draft
+              </label>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <label>DD/Cheque No.</label>
+            <input name="chequeNo" />
+          </div>
+          <div class="form-item">
+            <label>Drawn On (Bank Name)</label>
+            <input name="bank"/>
+          </div>
+          <div class="form-item">
+            <label>Payable at</label>
+            <input name="payableAt" type="date" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <input type="reset"/>
+        <input type="submit"/>
+      </div>
+    </form>
+    <div class="validation">
+      <a href="https://validator.w3.org/nu/?doc=https://sainturb.github.io/wap/form.html" target="_blank">
+        <img width="64" src="HTML-checker.png" alt="html validator" />
+      </a>
+      <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://sainturb.github.io/wap/form.html"
+        target="_blank">
+        <img width="64" src="CSS-checker.png" alt="css validator" />
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>
