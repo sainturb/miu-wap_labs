@@ -96,6 +96,10 @@ form {
 .col-6 {
   width: 50%;
 }
+.align-end-row {
+  justify-content: flex-end;
+  width: 100%;
+}
 .form-item {
   display: inline-flex;
   width: 100%;
