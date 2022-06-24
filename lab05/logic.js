@@ -3,7 +3,7 @@ function sum(arr) {
             .reduce((a, b) => a + b, 0);
 }
 
-function setValue1(id, val, arr) {
+const setValue1 = (id, val, arr) => {
   const passing = document.getElementById(id + 'passing');
   passing.innerHTML = `[${arr.map(i => {
     return i > 20 ? `<strong>${i}</strong>`: i;
@@ -12,7 +12,7 @@ function setValue1(id, val, arr) {
   value.innerText = val;
 }
 
-function setValue2(id, val, arr) {
+const setValue2 = (id, val, arr) => {
   const passing = document.getElementById(id + 'passing');
   passing.innerHTML = `[${arr.map(i => {
     return i.length >= 5 && i.includes('a') ? `<strong>${i}</strong>` : i;
@@ -24,7 +24,7 @@ function setValue2(id, val, arr) {
 const arr = [20, 21, 2, 25];
 runExercise1(arr);
 
-function getNewArray(arr) {
+const getNewArray = arr => {
   return arr.filter(item => item.length >= 5)
             .filter(item => item.includes('a'));
 }
@@ -32,12 +32,12 @@ function getNewArray(arr) {
 const strArr = ['Something', 'Planet', 'Saintur', 'Welcome', 'Along'];
 runExercise2(strArr);
 
-function runExercise1(arr) {
+const runExercise1 = arr => {
   const total = sum(arr);
   setValue1('exercise1', parseInt(total, 0), arr);
 }
 
-function runExercise2(arr) {
+const runExercise2 = arr => {
   const newArr = getNewArray(arr);
   setValue2('exercise2', `[${newArr}]`, arr);
 }
