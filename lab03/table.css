@@ -27,6 +27,8 @@
   height: calc(100% - 64px);
   overflow: auto;
   padding: 0 12px;
+  max-width: 840px;
+  margin: auto;
 }
 button {
   user-select: none;
@@ -49,8 +51,6 @@ button:hover {
 .table-wrapper {
   width: 100%;
   display: block; 
-  max-width: 664px;
-  margin: auto;
   overflow-x: auto;
 }
 .action-number {
@@ -79,7 +79,6 @@ button:hover {
 
 table {
   width: 100%;
-  max-width: 640px;
   margin: auto;
   text-align: center;
   border: 1px solid rgba(10, 10, 10, 0.1);
@@ -111,7 +110,6 @@ table tr td {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  max-width: 654px;
   margin: auto;
 }
 

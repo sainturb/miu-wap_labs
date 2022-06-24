@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="js.css" />
+  
+</head>
+<body>
+  <div class="header">
+    <div>
+      <a href="../index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="../unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>Javascript</div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <div>
+      <ol>
+        <li>
+          <p>Create a function using function declaration named sum with one parameter of Array type, the
+            returned result is the sum of all elements which are greater than 20.</p>
+          <div>Passing array: [20, <strong>21</strong>, 2, <strong>25</strong>]</div>
+          <div>Result: <strong id="exercise1"></strong></div>
+          <div>
+            <pre>
+function sum(arr) {
+  return arr.filter(item => item > 20)
+            .reduce((a, b) => a + b, 0);
+}
+</pre>
+          </div>
+        </li>
+        <li>
+          <p>
+            Create a function using function expression named getNewArray with one parameter of String
+            Array, return a new array which contains all string, length is greater than and equal to 5, and
+            contains letter ‘a’
+          </p>
+          <div>Passing array: [Something, <strong>Planet</strong>, <strong>Saintur</strong>, Welcome, Along]</div>
+          <div>Result: <strong id="exercise2"></strong></div>
+          <div>
+            <pre>
+function getNewArray(arr) {
+  return arr.filter(item => item.length >= 5)
+            .filter(item => item.includes('a'));
+} </pre>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <script type="text/javascript" src="logic.js"></script>
+</body>
+</html>
