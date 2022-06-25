@@ -2,7 +2,7 @@ function printNumbers(from, to) {
   'use strict';
   let interval = setInterval(() => {
     document.getElementById('exercise1').innerText = from;
-    if (from == to + 1) {
+    if (from == parseInt(to, 0) + 1) {
       document.getElementById('exercise1').innerText = 'Finished';
       clearInterval(interval);
     }
