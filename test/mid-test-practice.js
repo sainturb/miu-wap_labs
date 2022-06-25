@@ -7,6 +7,12 @@ const students = [
 ];
 
 students.filter(s => s.courses.includes('cs303')).map(s => {
+  const body = {};
+  body[s.name] = s.grades.reduce((a, b) => a + b) / s.grades.length;
+  return body;
+}).reduce((result, item) => Object.assign(item, result),{});
+
+students.filter(s => s.courses.includes('cs303')).map(s => {
   s.avg = s.grades.reduce((a, b) => a + b) / s.grades.length;
   return s;
 }).reduce(
@@ -16,6 +22,12 @@ students.filter(s => s.courses.includes('cs303')).map(s => {
   },
   {}
 );
+
+students.filter(s => s.courses.includes('cs303')).map(s => {
+  const body = {};
+  body[s.name] = s.grades.reduce((a, b) => a + b) / s.grades.length;
+  return body;
+}).reduce((result, item) => Object.assign(item, result),{});
 
 function b() {
   console.log('before x=10', x);

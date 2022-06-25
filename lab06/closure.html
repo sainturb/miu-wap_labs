@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EC & Closure</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="closure.css" />
+
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="../index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="../unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>EC & Closure</div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <div>
+      <ol>
+        <li>
+          <p>Draw diagram
+          </p>
+        </li>
+        <li>
+          <p>Write a function <code>printNumbers(from, to)</code> that outputs a number every second, starting
+            <code>from</code> and ending with <code>to</code>
+          </p>
+          <div>
+            <input id="from" type="number" placeholder="From number" />
+            <input id="to" type="number" placeholder="To number" />
+            <button id="run1">Print</button>
+          </div>
+          <div>Result: <strong id="exercise1"></strong></div>
+          <div>
+            <pre>
+function printNumbers(from, to) {
+  let interval = setInterval(() => {
+    document.getElementById('exercise1').innerText = from;
+    if (from == to) {
+      document.getElementById('exercise1').innerText = 'Finished';
+      clearInterval(interval);
+    }
+    from++;
+  }, 1000);
+}
+</pre>
+          </div>
+        </li>
+        <li>
+          <p>
+            In the code there's a <code>setTimeout</code> call scheduled, then the heavy calculation is run, that takes
+            more then 100ms to finish.
+          </p>
+<pre>
+let i = 0;
+setTimeout(() => alert(i), 100);
+for(let j = 0; j < 100000000; j++) {
+  i++;
+}
+</pre>
+          <strong>
+            When will the scheduled function run?
+          </strong>
+          <p> <strong>a. After the loop</strong> </p>
+          <p> b. Before the loop </p>
+          <p> c. In the beggining of the loop </p>
+          <p> d. What is alert going to show? <code>100000000</code></p>
+        </li>
+      </ol>
+    </div>
+    <div class="validation">
+      <a href="https://validator.w3.org/nu/?doc=https://sainturb.github.io/wap/lab06/closure.html" target="_blank">
+        <img width="64" src="../HTML-checker.png" alt="html validator" />
+      </a>
+      <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://sainturb.github.io/wap/lab06/closure.html"
+        target="_blank">
+        <img width="64" src="../CSS-checker.png" alt="css validator" />
+      </a>
+    </div>
+  </div>
+  <script type="text/javascript" src="closure.js"></script>
+</body>
+
+</html>
