@@ -21,16 +21,12 @@ const setValue2 = (id, val, arr) => {
   value.innerText = val;
 }
 
-const arr = [20, 21, 2, 25];
-runExercise1(arr);
+
 
 const getNewArray = arr => {
   return arr.filter(item => item.length >= 5)
             .filter(item => item.includes('a'));
 }
-
-const strArr = ['Something', 'Planet', 'Saintur', 'Welcome', 'Along'];
-runExercise2(strArr);
 
 const runExercise1 = arr => {
   const total = sum(arr);
@@ -51,4 +47,11 @@ document.getElementById('run2').addEventListener('click', () => {
   const arr = document.getElementById('input2').value.replace(' ', '').split(',');
   runExercise2(arr);
 });
+
+function onInitial() {
+  const arr = [20, 21, 2, 25];
+  runExercise1(arr);
+  const strArr = ['Something', 'Planet', 'Saintur', 'Welcome', 'Along'];
+  runExercise2(strArr);
+}
 
