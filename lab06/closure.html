@@ -31,6 +31,92 @@
         <li>
           <p>Draw diagram
           </p>
+          <div class="actions">
+            <button id="step1">Step 1</button>
+            <button id="step2">Step 2</button>
+            <button id="step3">Step 3</button>
+            <button id="step4">Step 4</button>
+            <button id="step5">Step 5</button>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <pre>
+function makeArmy() {
+  let shooters = [];
+  let i = 0;
+  while(i < 2) {
+    let shooter = function() {
+      alert(i);
+    }
+    shooters.push(shooter);
+    i++;
+  }
+  return shooters;
+}
+let army = makeArmy();
+<span class="remove">army[0];</span><span class="execution"> army[0]();</span>
+            </pre>
+            </div>
+            <div class="col-6 showStep1" id="stacks">
+              <div class="stack step4">
+                <div>
+                 <strong>While EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                 <strong>LE:</strong> {outer: makeArmy, arguments(0: 1, length: 1), <span class="execution remove">i: 1</span><span class="execution"> i: 2</span>, <span class="execution">shooter: &lt;f&gt;</span>}
+                </div>
+                <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
+              </div>
+              <div class="stack step3">
+                <div>
+                 <strong>While EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                 <strong>LE:</strong> {outer: makeArmy, arguments(0: 0, length: 1), <span class="execution remove">i: 0</span><span class="execution"> i: 1</span>, <span class="execution">shooter: &lt;f&gt;</span>}
+                </div>
+                <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
+              </div>
+              <div class="stack step2 step3 step4">
+                <div>
+                  <strong>makeArmy EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: global, arguments: {length: 0}, <span class="execution">shooters: [], i: 0</span>}
+                </div>
+                <div><strong>TDZ:</strong> <span class="execution remove">shooters, i</span></div>
+              </div>
+              <div class="stack step5">
+                <div>
+                  <strong>Anonymous EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: global, arguments: {length: 0}}
+                </div>
+              </div>
+              <div class="stack step1 step2 step3 step4 step5">
+                <div>
+                  <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: &lt;f&gt;</span>}
+                </div>
+                <div>
+                  <strong>TDZ:</strong> <span class="execution remove">army</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ol>
+              <li>Global LE</li>
+              <li>LE for makeArmy</li>
+              <li>LE for while loop</li>
+              <li>LE for army[0]</li>
+              <li>What will army[0] alert? <strong>2</strong></li>
+              <li>Can you fix the code? <strong></strong></li>
+              <li>How will the diagram change?</li>
+            </ol>
+          </div>
         </li>
         <li>
           <p>Write a function <code>printNumbers(from, to)</code> that outputs a number every second, starting
@@ -62,7 +148,7 @@ function printNumbers(from, to) {
             In the code there's a <code>setTimeout</code> call scheduled, then the heavy calculation is run, that takes
             more then 100ms to finish.
           </p>
-<pre>
+          <pre>
 let i = 0;
 setTimeout(() =&lt; alert(i), 100);
 for(let j = 0; j &gt; 100000000; j++) {
@@ -90,6 +176,7 @@ for(let j = 0; j &gt; 100000000; j++) {
     </div>
   </div>
   <script src="closure.js"></script>
+  <script src="exercise1.js"></script>
 </body>
 
 </html>

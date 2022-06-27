@@ -1,4 +1,6 @@
-input, textarea, select {
+input,
+textarea,
+select {
   background-color: rgba(120, 120, 120, 0.1);
   color: inherit;
   width: 80px;
@@ -9,10 +11,88 @@ input, textarea, select {
   min-width: 160px;
   padding: 0 4px;
 }
-code, pre {
+code,
+pre {
   font-size: 16px;
   color: #1467c6;
 }
 pre {
-  background: rgba(0,0,0,0.05);
+  margin: 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+.actions {
+  padding: 12px 0;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col-6 {
+  width: 50%;
+}
+.execution {
+  color: rgb(212, 0, 81);
+  font-weight: 700;
+}
+.remove {
+  text-decoration: line-through;
+}
+
+.stack {
+  border: 1px solid rgb(122, 122, 122);
+  padding: 8px;
+}
+
+.step1,
+.step2,
+.step3,
+.step4,
+.step5 {
+  display: none;
+}
+
+.showStep1 .step2,
+.showStep1 .step3,
+.showStep1 .step4,
+.showStep1 .step5 {
+  display: none;
+}
+
+.showStep2 .step1,
+.showStep2 .step3,
+.showStep2 .step4,
+.showStep2 .step5 {
+  display: none;
+}
+
+.showStep3 .step4,
+.showStep3 .step5 {
+  display: none;
+}
+
+.showStep4 .step3,
+.showStep4 .step5 {
+  display: none;
+}
+
+.showStep2 .step3,
+.showStep2 .step4,
+.showStep2 .step5 {
+  display: none;
+}
+
+.showStep1 .step1 {
+  display: block;
+}
+.showStep2 .step2 {
+  display: block;
+}
+.showStep3 .step3 {
+  display: block;
+}
+.showStep4 .step4 {
+  display: block;
+}
+.showStep5 .step5 {
+  display: block;
 }

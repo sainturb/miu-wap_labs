@@ -22,7 +22,48 @@ document.getElementById('run1').addEventListener('click', () => {
 });
 
 let i = 0;
-setTimeout(() => alert(i), 100);
-for(let j = 0; j < 100000000; j++) {
+// setTimeout(() => alert(i), 100);
+for (let j = 0; j < 100000000; j++) {
   i++;
 }
+
+document.getElementById('step1').addEventListener("click", () => {
+  const stacks = document.getElementById(`stacks`);
+  stacks.classList.remove('showStep2');
+  stacks.classList.remove('showStep3');
+  stacks.classList.remove('showStep4');
+  stacks.classList.remove('showStep5');
+  stacks.classList.add('showStep1');
+});
+document.getElementById('step2').addEventListener("click", () => {
+  const stacks = document.getElementById(`stacks`);
+  stacks.classList.remove('showStep1');
+  stacks.classList.remove('showStep3');
+  stacks.classList.remove('showStep4');
+  stacks.classList.remove('showStep5');
+  stacks.classList.add('showStep2');
+});
+document.getElementById('step3').addEventListener("click", () => {
+  const stacks = document.getElementById(`stacks`);
+  stacks.classList.remove('showStep1');
+  stacks.classList.remove('showStep2');
+  stacks.classList.remove('showStep4');
+  stacks.classList.remove('showStep5');
+  stacks.classList.add('showStep3');
+});
+document.getElementById('step4').addEventListener("click", () => {
+  const stacks = document.getElementById(`stacks`);
+  stacks.classList.remove('showStep1');
+  stacks.classList.remove('showStep2');
+  stacks.classList.remove('showStep3');
+  stacks.classList.remove('showStep5');
+  stacks.classList.add('showStep4');
+});
+document.getElementById('step5').addEventListener("click", () => {
+  const stacks = document.getElementById(`stacks`);
+  stacks.classList.remove('showStep1');
+  stacks.classList.remove('showStep2');
+  stacks.classList.remove('showStep3');
+  stacks.classList.remove('showStep4');
+  stacks.classList.add('showStep5');
+});
