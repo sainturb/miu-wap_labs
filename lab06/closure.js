@@ -27,43 +27,43 @@ for (let j = 0; j < 100000000; j++) {
   i++;
 }
 
-document.getElementById('step1').addEventListener("click", () => {
+document.getElementById('step1').addEventListener("click", (e) => {
   const stacks = document.getElementById(`stacks`);
-  stacks.classList.remove('showStep2');
-  stacks.classList.remove('showStep3');
-  stacks.classList.remove('showStep4');
-  stacks.classList.remove('showStep5');
-  stacks.classList.add('showStep1');
+  removeClassFromButtons(1);
+  stacks.className = 'showStep1 col-6'
 });
-document.getElementById('step2').addEventListener("click", () => {
+document.getElementById('step2').addEventListener("click", (e) => {
   const stacks = document.getElementById(`stacks`);
-  stacks.classList.remove('showStep1');
-  stacks.classList.remove('showStep3');
-  stacks.classList.remove('showStep4');
-  stacks.classList.remove('showStep5');
-  stacks.classList.add('showStep2');
+  removeClassFromButtons(2);
+  stacks.className = 'showStep2 col-6';
 });
-document.getElementById('step3').addEventListener("click", () => {
+document.getElementById('step3').addEventListener("click", (e) => {
   const stacks = document.getElementById(`stacks`);
-  stacks.classList.remove('showStep1');
-  stacks.classList.remove('showStep2');
-  stacks.classList.remove('showStep4');
-  stacks.classList.remove('showStep5');
-  stacks.classList.add('showStep3');
+  removeClassFromButtons(3);
+  stacks.className = 'showStep3 col-6';
 });
-document.getElementById('step4').addEventListener("click", () => {
+document.getElementById('step4').addEventListener("click", (e) => {
   const stacks = document.getElementById(`stacks`);
-  stacks.classList.remove('showStep1');
-  stacks.classList.remove('showStep2');
-  stacks.classList.remove('showStep3');
-  stacks.classList.remove('showStep5');
-  stacks.classList.add('showStep4');
+  removeClassFromButtons(4);
+  stacks.className = 'showStep4 col-6';
 });
-document.getElementById('step5').addEventListener("click", () => {
+document.getElementById('step5').addEventListener("click", (e) => {
   const stacks = document.getElementById(`stacks`);
-  stacks.classList.remove('showStep1');
-  stacks.classList.remove('showStep2');
-  stacks.classList.remove('showStep3');
-  stacks.classList.remove('showStep4');
-  stacks.classList.add('showStep5');
+  removeClassFromButtons(5);
+  stacks.className = 'showStep5 col-6';
 });
+document.getElementById('step6').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`stacks`);
+  removeClassFromButtons(6);
+  stacks.className = 'showStep6 col-6';
+});
+
+function removeClassFromButtons(number) {
+  for(var n = 1; n <= 6; n++) {
+    if (n === number) {
+      document.getElementById(`step${n}`).className = 'active';
+    } else {
+      document.getElementById(`step${n}`).removeAttribute('class');
+    }
+  }
+}

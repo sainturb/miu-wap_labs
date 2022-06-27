@@ -174,7 +174,8 @@ button {
   color: inherit;
 }
 
-button:hover {
+button:hover,
+button.active {
   background: linear-gradient(rgb(85, 155, 240), rgb(32, 115, 216));
   color: white;
 }

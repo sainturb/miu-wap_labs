@@ -32,11 +32,12 @@
           <p>Draw diagram
           </p>
           <div class="actions">
-            <button id="step1">Step 1</button>
+            <button class="active" id="step1">Step 1</button>
             <button id="step2">Step 2</button>
             <button id="step3">Step 3</button>
             <button id="step4">Step 4</button>
             <button id="step5">Step 5</button>
+            <button id="step6">Step 6</button>
           </div>
           <div class="row">
             <div class="col-6">
@@ -58,12 +59,27 @@ let army = makeArmy();
             </pre>
             </div>
             <div class="col-6 showStep1" id="stacks">
+              <div class="closure step5 step6">
+                <div>
+                 <strong>Closure: </strong>  <code>{shooters: [fn<>, fn<>], i: 2}</code>
+                </div>
+              </div>
+              <div class="closure step4">
+                <div>
+                 <strong>Closure:</strong> <code>{shooters: [fn<>], i: 1}</code>
+                </div>
+              </div>
+              <div class="closure step3">
+                <div>
+                 <strong>Closure:</strong> <code>{shooters: [], i: 0}</code>
+                </div>
+              </div>
               <div class="stack step4">
                 <div>
                  <strong>While EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
                 <div>
-                 <strong>LE:</strong> {outer: makeArmy, arguments(0: 1, length: 1), <span class="execution remove">i: 1</span><span class="execution"> i: 2</span>, <span class="execution">shooter: &lt;f&gt;</span>}
+                 <strong>LE:</strong> {outer: makeArmy, arguments(length: 0), <span class="execution">shooter: fn&lt;&gt;</span>}
                 </div>
                 <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
               </div>
@@ -72,11 +88,11 @@ let army = makeArmy();
                  <strong>While EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
                 <div>
-                 <strong>LE:</strong> {outer: makeArmy, arguments(0: 0, length: 1), <span class="execution remove">i: 0</span><span class="execution"> i: 1</span>, <span class="execution">shooter: &lt;f&gt;</span>}
+                 <strong>LE:</strong> {outer: makeArmy, arguments(length: 0), <span class="execution">shooter: fn&lt;&gt;</span>}
                 </div>
                 <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
               </div>
-              <div class="stack step2 step3 step4">
+              <div class="stack step2">
                 <div>
                   <strong>makeArmy EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
@@ -93,12 +109,12 @@ let army = makeArmy();
                   <strong>LE:</strong> {outer: global, arguments: {length: 0}}
                 </div>
               </div>
-              <div class="stack step1 step2 step3 step4 step5">
+              <div class="stack step1 step2 step3 step4 step5 step6">
                 <div>
                   <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
                 <div>
-                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: &lt;f&gt;</span>}
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: fn&lt;&gt;</span>}
                 </div>
                 <div>
                   <strong>TDZ:</strong> <span class="execution remove">army</span>

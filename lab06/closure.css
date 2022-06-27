@@ -39,10 +39,15 @@ pre {
 }
 
 .stack {
-  border: 1px solid rgb(122, 122, 122);
+  background-color: rgba(122, 122, 122, 0.2);
+  border-bottom: 1px solid rgba(122, 122, 122, 0.3);
+  padding: 8px;
+  min-height: 59px;
+}
+.closure {
+  background-color: rgba(0, 119, 255, 0.2);
   padding: 8px;
 }
-
 .step1,
 .step2,
 .step3,
@@ -65,11 +70,13 @@ pre {
   display: none;
 }
 
+.showStep3 .step2,
 .showStep3 .step4,
 .showStep3 .step5 {
   display: none;
 }
 
+.showStep4 .step2,
 .showStep4 .step3,
 .showStep4 .step5 {
   display: none;
@@ -95,4 +102,11 @@ pre {
 }
 .showStep5 .step5 {
   display: block;
+}
+.showStep6 .step1,
+.showStep6 .step6 {
+  display: block;
+}
+.variables {
+  font-family: monospace;
 }
