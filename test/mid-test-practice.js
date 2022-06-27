@@ -45,3 +45,5 @@ console.log('after function b', x);
 
 const factorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) };
 console.log('factorial', factorial(3));
+
+const ipaddressregex = '((2([0-4]\d|5[0-5])|(1[0-9]{2})|([1-9]\d)|(\d))\.){3}(2([0-4]\d|5[0-5])|(1[0-9]{2})|([1-9]\d)|(\d))';
