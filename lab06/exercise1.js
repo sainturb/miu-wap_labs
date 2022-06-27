@@ -3,7 +3,7 @@ function makeArmy() {
   let i = 0;
   while(i < 2) {
     const shooter = function() {
-      alert(i);
+      console.log(i);
     }
     shooters.push(shooter);
     i++;
@@ -11,4 +11,4 @@ function makeArmy() {
   return shooters;
 }
 let army = makeArmy();
-// console.log(army[0]());
+army.forEach(a => a());

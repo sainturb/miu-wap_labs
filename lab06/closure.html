@@ -92,7 +92,7 @@ let army = makeArmy();
                 </div>
                 <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
               </div>
-              <div class="stack step2">
+              <div class="stack step2 step3 step4">
                 <div>
                   <strong>makeArmy EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
@@ -148,9 +148,8 @@ let army = makeArmy();
             <pre>
 function printNumbers(from, to) {
   let interval = setInterval(() =&lt; {
-    document.getElementById('exercise1').innerText = from;
+    console.log(from);
     if (from == to) {
-      document.getElementById('exercise1').innerText = 'Finished';
       clearInterval(interval);
     }
     from++;
