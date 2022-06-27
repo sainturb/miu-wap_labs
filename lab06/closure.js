@@ -58,12 +58,53 @@ document.getElementById('step6').addEventListener("click", (e) => {
   stacks.className = 'showStep6 col-6';
 });
 
+document.getElementById('forstep1').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`forstacks`);
+  removeClassFromForButtons(1);
+  stacks.className = 'forshowStep1 col-6'
+});
+document.getElementById('forstep2').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`forstacks`);
+  removeClassFromForButtons(2);
+  stacks.className = 'forshowStep2 col-6';
+});
+document.getElementById('forstep3').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`forstacks`);
+  removeClassFromForButtons(3);
+  stacks.className = 'forshowStep3 col-6';
+});
+document.getElementById('forstep4').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`forstacks`);
+  removeClassFromForButtons(4);
+  stacks.className = 'forshowStep4 col-6';
+});
+document.getElementById('forstep5').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`forstacks`);
+  removeClassFromForButtons(5);
+  stacks.className = 'forshowStep5 col-6';
+});
+document.getElementById('forstep6').addEventListener("click", (e) => {
+  const stacks = document.getElementById(`forstacks`);
+  removeClassFromForButtons(6);
+  stacks.className = 'forshowStep6 col-6';
+});
+
 function removeClassFromButtons(number) {
   for(var n = 1; n <= 6; n++) {
     if (n === number) {
       document.getElementById(`step${n}`).className = 'active';
     } else {
       document.getElementById(`step${n}`).removeAttribute('class');
+    }
+  }
+}
+
+function removeClassFromForButtons(number) {
+  for(var n = 1; n <= 6; n++) {
+    if (n === number) {
+      document.getElementById(`forstep${n}`).className = 'active';
+    } else {
+      document.getElementById(`forstep${n}`).removeAttribute('class');
     }
   }
 }

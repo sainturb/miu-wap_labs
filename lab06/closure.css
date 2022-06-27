@@ -52,59 +52,92 @@ pre {
 .step2,
 .step3,
 .step4,
-.step5 {
+.step5,
+.forstep1,
+.forstep2,
+.forstep3,
+.forstep4,
+.forstep5 {
   display: none;
 }
 
 .showStep1 .step2,
 .showStep1 .step3,
 .showStep1 .step4,
-.showStep1 .step5 {
+.showStep1 .step5,
+.forshowStep1 .forstep2,
+.forshowStep1 .forstep3,
+.forshowStep1 .forstep4,
+.forshowStep1 .forstep5 {
   display: none;
 }
 
 .showStep2 .step1,
 .showStep2 .step3,
 .showStep2 .step4,
-.showStep2 .step5 {
+.showStep2 .step5,
+
+.forshowStep2 .forstep1,
+.forshowStep2 .forstep3,
+.forshowStep2 .forstep4,
+.forshowStep2 .forstep5{
   display: none;
 }
 
-.showStep3 .step2,
-.showStep3 .step4,
-.showStep3 .step5 {
+.showStep3 .forstep2,
+.showStep3 .forstep4,
+.showStep3 .forstep5,
+
+.forshowStep3 .forstep2,
+.forshowStep3 .forstep4,
+.forshowStep3 .forstep5{
   display: none;
 }
 
 .showStep4 .step2,
 .showStep4 .step3,
-.showStep4 .step5 {
+.showStep4 .step5,
+
+.forshowStep4 .forstep2,
+.forshowStep4 .forstep3,
+.forshowStep4 .forstep5 {
   display: none;
 }
 
 .showStep2 .step3,
 .showStep2 .step4,
-.showStep2 .step5 {
+.showStep2 .step5,
+
+.forshowStep2 .forstep3,
+.forshowStep2 .forstep4,
+.forshowStep2 .forstep5{
   display: none;
 }
 
-.showStep1 .step1 {
+.showStep1 .step1 ,
+.forshowStep1 .forstep1 {
   display: block;
 }
-.showStep2 .step2 {
+.showStep2 .step2,
+.forshowStep2 .forstep2 {
   display: block;
 }
-.showStep3 .step3 {
+.showStep3 .step3,
+.forshowStep3 .forstep3  {
   display: block;
 }
-.showStep4 .step4 {
+.showStep4 .step4,
+.forshowStep4 .forstep4  {
   display: block;
 }
-.showStep5 .step5 {
+.showStep5 .step5,
+.forshowStep5 .forstep5  {
   display: block;
 }
 .showStep6 .step1,
-.showStep6 .step6 {
+.showStep6 .step6,
+.forshowStep6 .forstep1,
+.forshowStep6 .forstep6 {
   display: block;
 }
 .variables {

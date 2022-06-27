@@ -129,9 +129,83 @@ let army = makeArmy();
               <li>LE for while loop</li>
               <li>LE for army[0]</li>
               <li>What will army[0] alert? <strong>2</strong></li>
-              <li>Can you fix the code? <strong></strong></li>
-              <li>How will the diagram change?</li>
+              <li>Can you fix the code? <strong>Change it to for loop, because For has its own LE</strong></li>
+              <li>How will the diagram change? <strong>Diagram is slightly different than using while. After using for loop, we don't need to access to CLOSURE</strong></li>
             </ol>
+          </div>
+          <div class="actions">
+            <button class="active" id="forstep1">Step 1</button>
+            <button id="forstep2">Step 2</button>
+            <button id="forstep3">Step 3</button>
+            <button id="forstep4">Step 4</button>
+            <button id="forstep5">Step 5</button>
+            <button id="forstep6">Step 6</button>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <pre>
+function makeArmy() {
+  let shooters = [];
+  for(let i = 0; i < 2; i++) {
+    let shooter = function() {
+      alert(i);
+    }
+    shooters.push(shooter);
+  }
+  return shooters;
+}
+let army = makeArmy();
+<span class="remove">army[0];</span><span class="execution"> army[0]();</span>
+            </pre>
+            </div>
+            <div class="col-6 forshowStep1" id="forstacks">
+              <div class="stack forstep4">
+                <div>
+                 <strong>For EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                 <strong>LE:</strong> {outer: makeArmy, arguments(length: 0), {i: 1} <span class="execution">shooter: fn&lt;&gt;</span>}
+                </div>
+                <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
+              </div>
+              <div class="stack forstep3">
+                <div>
+                 <strong>For EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                 <strong>LE:</strong> {outer: makeArmy, arguments(length: 0), {i: 0}  <span class="execution">shooter: fn&lt;&gt;</span>}
+                </div>
+                <div><strong>TDZ:</strong> <span class="execution remove">shooter</span></div>
+              </div>
+              <div class="stack forstep2 forstep3 forstep4">
+                <div>
+                  <strong>makeArmy EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: global, arguments: {length: 0}, <span class="execution">shooters: []</span>}
+                </div>
+                <div><strong>TDZ:</strong> <span class="execution remove">shooters</span></div>
+              </div>
+              <div class="stack forstep5">
+                <div>
+                  <strong>Anonymous EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: global, arguments: {length: 0}, i: 0}
+                </div>
+              </div>
+              <div class="stack forstep1 forstep2 forstep3 forstep4 forstep5 forstep6">
+                <div>
+                  <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: fn&lt;&gt;</span>}
+                </div>
+                <div>
+                  <strong>TDZ:</strong> <span class="execution remove">army</span>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
         <li>
