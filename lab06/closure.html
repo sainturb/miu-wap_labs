@@ -45,7 +45,7 @@
 function makeArmy() {
   let shooters = [];
   let i = 0;
-  while(i < 2) {
+  while(i &lt; 2) {
     let shooter = function() {
       alert(i);
     }
@@ -61,12 +61,12 @@ let army = makeArmy();
             <div class="col-6 showStep1" id="stacks">
               <div class="closure step5 step6">
                 <div>
-                 <strong>Closure: </strong>  <code>{shooters: [fn<>, fn<>], i: 2}</code>
+                 <strong>Closure: </strong>  <code>{shooters: [fn&lt;&gt;, fn&lt;&gt;], i: 2}</code>
                 </div>
               </div>
               <div class="closure step4">
                 <div>
-                 <strong>Closure:</strong> <code>{shooters: [fn<>], i: 1}</code>
+                 <strong>Closure:</strong> <code>{shooters: [fn&lt;&gt;], i: 1}</code>
                 </div>
               </div>
               <div class="closure step3">
@@ -146,7 +146,7 @@ let army = makeArmy();
               <pre>
 function makeArmy() {
   let shooters = [];
-  for(let i = 0; i < 2; i++) {
+  for(let i = 0; i &lt; 2; i++) {
     let shooter = function() {
       alert(i);
     }
