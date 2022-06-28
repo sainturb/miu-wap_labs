@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Context</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="context.css" />
+
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="../index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="../unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>Call Context</div>
+    <div >
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <ol>
+      <li>
+        <div>
+          Fix the highlighted line for everything to start working right.
+        </div>
+        <div class="actions">
+          <button id="login">Login</button>
+        </div>
+        <pre>
+function askPassword(ok, fail) {
+  let password = prompt("Put in a password: ", '');
+  if (password === 'rockstar') ok();
+  else fail();
+}
+let user = {
+  name: "John",
+  loginOk() {
+    alert("You are now logged in");
+  },
+  loginFail() {
+    alert("Failed to login");
+  }
+}
+<span class="highlighted remove">askPassword(user.loginOk, user.loginFail);</span>
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+        </pre>
+      </li>
+      <li>
+        <div>
+          Fix the code below using bind
+        </div>
+        <div>
+          <pre>
+let group = {
+  title: "Our Group",
+  students: ["John", "Pete", "Alice"],
+  showList: function() {
+<pre class="remove">
+    this.students.forEach(function(student) {
+      console.log(this.title + ": " + student
+    );
+</pre>
+    const printStudent = function (student) {
+      console.log(this.title + ": " + student);
+    }
+    this.students.forEach(printStudent.bind(this));
+  });
+  }
+};
+<span class="remove">group.showList();  </span>   
+group.showList.bind(group)();
+          </pre>
+        </div>
+        <div>
+          <strong>Result: </strong><span id="result2"></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script src="context.js"></script>
+</body>
+
+</html>
