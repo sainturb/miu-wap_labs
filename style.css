@@ -128,8 +128,9 @@ small {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 24px);
   height: 64px;
+  padding: 0 12px;
 }
 
 .header img {
@@ -137,7 +138,13 @@ small {
 }
 
 .header div {
-  padding: 0 12px;
+  padding: 4px 12px;
+  transition: all 0.3s linear;
+  border-radius: 4px;
+}
+
+.header div:first-child:hover {
+  background-color: rgba(120, 120, 120, 0.2);
 }
 
 .header div:nth-child(2) {
@@ -151,8 +158,11 @@ small {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  min-width: 72px;
   text-align: center;
+}
+.header a strong {
+  text-align: left;
+  width: 20px;
 }
 .content {
   height: calc(100% - 64px);

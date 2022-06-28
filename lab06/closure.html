@@ -109,17 +109,29 @@ let army = makeArmy();
                   <strong>LE:</strong> {outer: global, arguments: {length: 0}}
                 </div>
               </div>
-              <div class="stack step1 step2 step3 step4 step5 step6">
+              <div class="stack step6">
                 <div>
                   <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
                 <div>
-                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: fn&lt;&gt;</span>}
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: [fn&lt;&gt;,fn&lt;&gt;]</span>}
                 </div>
                 <div>
                   <strong>TDZ:</strong> <span class="execution remove">army</span>
                 </div>
               </div>
+              <div class="stack step1 step2 step3 step4 step5">
+                <div>
+                  <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}}
+                </div>
+                <div>
+                  <strong>TDZ:</strong> <span class="">army</span>
+                </div>
+              </div>
+             
             </div>
           </div>
           <div>
@@ -194,12 +206,23 @@ let army = makeArmy();
                   <strong>LE:</strong> {outer: global, arguments: {length: 0}, i: 0}
                 </div>
               </div>
-              <div class="stack forstep1 forstep2 forstep3 forstep4 forstep5 forstep6">
+              <div class="stack forstep6">
                 <div>
                   <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
                 </div>
                 <div>
-                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: fn&lt;&gt;</span>}
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}, <span class="execution">army: [fn&lt;&gt;, fn&lt;&gt;]</span>}
+                </div>
+                <div>
+                  <strong>TDZ:</strong> <span class="execution remove">army</span>
+                </div>
+              </div>
+              <div class="stack forstep1 forstep2 forstep3 forstep4 forstep5">
+                <div>
+                  <strong>Global EC:</strong> Creation <span class="execution">&rarr; Execution</span>;
+                </div>
+                <div>
+                  <strong>LE:</strong> {outer: null, arguments: {length: 0}}
                 </div>
                 <div>
                   <strong>TDZ:</strong> <span class="execution remove">army</span>

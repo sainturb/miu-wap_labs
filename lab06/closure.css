@@ -53,11 +53,13 @@ pre {
 .step3,
 .step4,
 .step5,
+.step6,
 .forstep1,
 .forstep2,
 .forstep3,
 .forstep4,
-.forstep5 {
+.forstep5,
+.forstep6 {
   display: none;
 }
 
@@ -134,9 +136,7 @@ pre {
 .forshowStep5 .forstep5  {
   display: block;
 }
-.showStep6 .step1,
 .showStep6 .step6,
-.forshowStep6 .forstep1,
 .forshowStep6 .forstep6 {
   display: block;
 }
