@@ -46,10 +46,34 @@ html, body {
   margin: 0;
 }
 
+
+.grids {
+  display: grid;
+  grid-template-columns: calc(25% - 12px) calc(25% - 12px) calc(25% - 12px) calc(25% - 12px);
+  grid-gap: 12px;
+}
+
+.grid {
+  min-width: 120px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px #2d2d2d1f;
+  padding: 8px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 84px;
+}
+
 @media (prefers-color-scheme: dark) {
   html, body { 
     background: #1e1e1e;
     color: #ffffff;
+  }
+  .card {
+    background: #000;
   }
 }
 
@@ -188,4 +212,9 @@ button:hover,
 button.active {
   background: linear-gradient(rgb(85, 155, 240), rgb(32, 115, 216));
   color: white;
+}
+
+a.card {
+  text-decoration: none;
+  color: inherit;
 }
