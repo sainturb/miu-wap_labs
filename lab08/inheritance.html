@@ -28,9 +28,82 @@
     <ol>
       <li>
         <p>
+          Create an object student using object literal which has <strong>firstname, lastname, grades</strong> and <strong>inputNewGrade, computeAverageGrade</strong> methods
+        </p>
+        <pre>
+let student = {
+  firstname: "John",
+  lastname: "Doe",
+  grades: [],
+  inputNewGrade: function(grade) {
+    this.grades.push(grade);
+  },
+  computeAverageGrade: function() {
+    return this.grades.reduce((a, b) => a + b) / this.grades.length;
+  }
+}
+        </pre>
+        <p>
+          Create an Array with multiple students which are created using Object.create() them compute the average grade for all students in the array.
+        </p>
+        <pre>
+let st1= Object.create(student);
+st1.firstname = "Mike";
+st1.lastname = "Brown";
+st1.inputNewGrade(90);
+st1.inputNewGrade(80);
+st1.inputNewGrade(97);
+....
+        </pre>
+        <code id="console2">
+        </code>
+      </li>
+      <li>
+        <p>
+          Redo the question 1 using constructor function.
+        </p>
+        <pre>
+function Student(firstname, lastname, grades = []) {
+  this.firstname = firstname;
+  this.lastname = lastname;
+  this.grades = grades;
+}
+Student.prototype.inputNewGrade = function(grade) {
+  this.grades.push(grade);
+}
+Student.prototype.computeAverageGrade = function() {
+  return this.grades.reduce((a, b) => a + b) / this.grades.length;
+}
+                  </pre>
+        <code id="console3">
+        </code>
+      </li>
+      <li>
+        <p>
+          Add a new method named sort without parameters in built-in constructor function Array. It'll sort all elements in the array in ascending order.
+        </p>
+        <pre>
+Array.prototype.mysort = function() {
+  const sorted = this;
+  const length = this.length;
+  for(let i = length; i >0 ; i--) {
+    for(let j = 1; j < length; j++) {
+      if (sorted[j - 1] > sorted[j]) {
+        let temp = sorted[j-1];
+        sorted[j-1]= sorted[j];
+        sorted[j] = temp;
+      }
+    }
+  }
+  return sorted;
+}
+        </pre>
+        <code id="console4"></code>
+      </li>
+      <li>
+        <p>
           Use object literal and constructor function to implement a Singley LinkedList.
         </p>
-        
       </li>
     </ol>
     <div class="validation">
@@ -46,7 +119,6 @@
   <script src="obj1.js"></script>
   <script src="obj2.js"></script>
   <script src="obj3.js"></script>
-  <script src="obj4.js"></script>
 </body>
 
 </html>

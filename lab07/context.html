@@ -50,7 +50,15 @@ let user = {
   }
 }
 <span class="highlighted remove">askPassword(user.loginOk, user.loginFail);</span>
+// 1. wrapper
+askPassword(() => user.loginOk(), () => user.loginFail());
+askPassword(function() {user.loginOk()}, function() {user.loginFail()});
+// 2. bind
 askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+// 3. call with wrapper
+askPassword(() => user.loginOk().call(user), () => user.loginFail().call(user));
+// 4. apply with wrapper
+askPassword(() => user.loginOk().apply(user), () => user.loginFail().apply(user));
         </pre>
       </li>
       <li>
