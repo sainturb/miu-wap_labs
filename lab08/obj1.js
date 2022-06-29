@@ -37,5 +37,5 @@ console2.innerText += line1;
 students.forEach(s => {
   const line = `${s.firstname} ${s.lastname}'s average grade is ${s.computeAverageGrade()}\n`;
   console.log(line)
-  console1.innerText += line;
+  console2.innerText += line;
 })
