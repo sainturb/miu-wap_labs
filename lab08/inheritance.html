@@ -39,7 +39,7 @@ let student = {
     this.grades.push(grade);
   },
   computeAverageGrade: function() {
-    return this.grades.reduce((a, b) => a + b) / this.grades.length;
+    return this.grades.reduce((a, b) =&gt; a + b) / this.grades.length;
   }
 }
         </pre>
@@ -72,7 +72,7 @@ Student.prototype.inputNewGrade = function(grade) {
   this.grades.push(grade);
 }
 Student.prototype.computeAverageGrade = function() {
-  return this.grades.reduce((a, b) => a + b) / this.grades.length;
+  return this.grades.reduce((a, b) =&gt; a + b) / this.grades.length;
 }
                   </pre>
         <code id="console3">
