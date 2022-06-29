@@ -1,6 +1,6 @@
 function LinkedList() {}
 LinkedList.prototype.add = function(value) {
-
+  
 }
 
 LinkedList.prototype.remove = function(value) {
@@ -8,6 +8,7 @@ LinkedList.prototype.remove = function(value) {
 }
 
 LinkedList.prototype.print = function() {
+  document.getElementById('console5').innerText = this;
   console.log(this);
 }
 
