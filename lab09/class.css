@@ -1,0 +1,24 @@
+code,
+pre {
+  font-size: 16px;
+  color: #1467c6;
+}
+pre {
+  margin: 0;
+  background: rgba(0, 0, 0, 0.05);
+  width: inherit;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+.correct {
+   color: rgb(35, 169, 102);
+}
+.incorrect {
+  color: rgb(205, 47, 47);
+}
+#results,
+#students,
+#questions {
+  padding: 12px 0;
+  line-height: 24px;
+}

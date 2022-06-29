@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="class.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="../index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="../unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>Class</div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <div>
+      <ol>
+        <li>
+          <p>Use class syntax to create LinkedList. Methods below</p>
+          <ol>
+            <li>add(value)</li>
+            <li>remove(value)</li>
+            <li>print()</li>
+          </ol>
+        </li>
+
+        <li>
+          <p>This is a quiz system which allows students to take quiz, get each student's quiz score and
+            compute average score of students.
+          </p>
+          <p>
+            You need to use constructor functions or class syntax to implement Student, Question and Quiz
+            constructor function/class Student:
+          </p>
+          <strong>Properties:</strong>
+          <ul>
+            <li>
+             <strong> studentId:</strong> a unique student id
+            </li>
+            <li>
+             <strong> answers:</strong> holds an array that records the student's answers for the questions.
+            </li>
+            <li>
+             <strong> method:</strong> addAnswer(question) - add student's question(id, answer) to answers array.
+            </li>
+          </ul>
+          <p>
+            constructor function/class Question:
+          </p>
+          <strong>Properties:</strong>
+          <ul>
+            <li>
+             <strong> qid:</strong> unique quesiton id
+            </li>
+            <li>
+             <strong> answer:</strong> hold quiz correct answer or student's answer
+            </li>
+            <li>
+             <strong> method:</strong> checkAnswer(answer) - used to check if student's answer is correct
+             <pre>
+checkAnswer(answer) {
+  return this.answer === answer;
+}
+             </pre>
+            </li>
+          </ul>
+          <p>
+            constructor function/class Quiz:
+          </p>
+          <strong>Properties:</strong>
+          <ul>
+            <li>
+             <strong> questions:</strong>  It's a Map which holds question id and correct answers. The key is question id, the
+             value is the correct answer for this question
+            </li>
+            <li>
+             <strong> students:</strong> an array holds all students
+            </li>
+            <li>
+             <strong> methods:</strong>
+             <ul>
+              <li>scoreStudentById(sid), computes the quiz score for this student</li>
+              <li>getAverageScore(), computes the average score over all students</li>
+             </ul>
+             <pre>
+scoreStudentBySid(sid) {
+  const student = this.students.find(s => s.sid == sid);
+  return student.answers
+    .filter((answer) => this.question(answer).answer === answer.answer)
+    .reduce((correct) => correct + 1, 0);
+  }
+getAverageScore() {
+  return this.students.reduce((avg, student) => avg + this.scoreStudentBySid(student.sid), 0) / students.length;
+}
+             </pre>
+            </li>
+          </ul>
+          <div>
+            <div id="questions">
+            </div>
+            <div id="students">
+            </div>
+            <div id="results">
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="validation">
+      <a href="https://validator.w3.org/nu/?doc=https://sainturb.github.io/wap/lab09/class.html" target="_blank">
+        <img width="64" src="../HTML-checker.png" alt="html validator" />
+      </a>
+      <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://sainturb.github.io/wap/lab09/class.html"
+        target="_blank">
+        <img width="64" src="../CSS-checker.png" alt="css validator" />
+      </a>
+    </div>
+  </div>
+  <script src="class1.js"></script>
+  <script src="class2.js"></script>
+</body>
+
+</html>
