@@ -86,9 +86,9 @@ Student.prototype.computeAverageGrade = function() {
 Array.prototype.mysort = function() {
   const sorted = this;
   const length = this.length;
-  for(let i = length; i >0 ; i--) {
-    for(let j = 1; j < length; j++) {
-      if (sorted[j - 1] > sorted[j]) {
+  for(let i = length; i &gt; 0 ; i--) {
+    for(let j = 1; j &lt; length; j++) {
+      if (sorted[j - 1] &gt; sorted[j]) {
         let temp = sorted[j-1];
         sorted[j-1]= sorted[j];
         sorted[j] = temp;
