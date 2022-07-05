@@ -214,6 +214,10 @@ button.active {
   color: white;
 }
 
+.blue {
+  background: linear-gradient(rgb(85, 155, 240), rgb(32, 115, 216));
+}
+
 a.card {
   text-decoration: none;
   color: inherit;

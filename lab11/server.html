@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPM Modules</title>
+
+  <link rel="shortcuts icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="server.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="../index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="../unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>NPM Modules</div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <ol>
+      <li>
+        <p>
+          Create a simple Node script that converts 'www.miu.edu' domain name to the equivalent IP address. (Search and
+          learn 'dns' module, resolve4) - For this exercise, you need to look up Node.js API by yourself
+        </p>
+        <p>
+          <a target="_blank" href="https://nodejs.org/api/dns.html">&rarr; DNS and Resolver4 Documentation</a>
+        </p>
+        <pre>
+saintor@Macbook task1 % nodemon index.js
+[nodemon] 2.0.19
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node index.js`
+address: "192.249.118.206" family: IPv4
+addresses: ["192.249.118.206"]
+reverse for 192.249.118.206: ["www8.safire.com"]
+[nodemon] clean exit - waiting for changes before restart
+        </pre>
+      </li>
+      <li>
+        <p>
+          Create a web server that's going to send a response of big image to any client that sends a request to your
+          specified server:port. (Try to solve this in many different ways)
+        </p>
+        <pre>
+const http = require('http');
+const fs = require('fs');
+const server = http.createServer((req, res) => {
+  const data = fs.readFileSync('dog.jpeg');
+  res.end(data)
+});
+server.listen(3000);
+        </pre>
+      </li>
+    </ol>
+  </div>
+</body>
+
+</html>

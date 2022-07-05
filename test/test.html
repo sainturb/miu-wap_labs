@@ -7,33 +7,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    body {
-      background-color: yellow;
-      color: magenta;
+    #main div {
+      background-color: silver;
+      color: gray;
     }
-
-    p {
-      color: orange;
+    div, span {
+      border: 1px solid black;
+      padding: 2px;
+      margin: 2px;
     }
-
-    .central,
-    .item {
-      color: green;
+    #c {
+      position: relative;
+      height: 500px;
     }
-
-    #item {
-      background-color: cyan;
+    #d{
+      height: 100px;
+    }
+    #f {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100px;
+      width: 100px;
+    }
+    p .p {
+      background-color: rgb(11, 190, 110);
+    }
+    p.p {
+      background-color: rgb(255, 40, 119);
     }
   </style>
 </head>
 
-<body>
-  <p>First piece of text; what color am I?</p>
-  <div class="central">
-    <p>Second piece of text; what color am I?</p>
-    <ul>
-      <li id="item">Third piece of text; what color am I?</li>
-    </ul>
+<body id="main">
+
+  <p class="p">
+    <span class="text">test</span>
+  </p>
+  
+  <div>
+    A<span>B</span>
+    <div id="c">
+      C
+      <div id="d">
+        D
+        <span id="e">
+          E
+          <span id="f">F</span>
+        </span>
+      </div>
+    </div>
   </div>
 
   <!-- Foreground of First: magenta
@@ -42,22 +65,22 @@ Foreground of Second: orange
 Background of Second: yellow
 Foreground of Third: green
 Background of Third: cyan -->
-  <script>
+  <script src="mid-test-practice.js">
 
-    function b() {
-      // console.log('before x=10', x);
-      const x = 10;
-      console.log('after x=10', x);
-      a(50);
-      function a(x) {
-          console.log('inside function a', x);
-      }
-      console.log('after function a', x);
-    }
-    var x = 20;
-    console.log('after x=20', x);
-    b();
-    console.log('after function b', x);
+    // function b() {
+    //   // console.log('before x=10', x);
+    //   const x = 10;
+    //   console.log('after x=10', x);
+    //   a(50);
+    //   function a(x) {
+    //       console.log('inside function a', x);
+    //   }
+    //   console.log('after function a', x);
+    // }
+    // var x = 20;
+    // console.log('after x=20', x);
+    // b();
+    // console.log('after function b', x);
 //     1. 20
 //     2. 20
 //     3. 10
@@ -67,8 +90,8 @@ Background of Third: cyan -->
 
     // ((1[0-9]{0,2}|2[0-5]{0,2})\.{1}){3}(1[0-9]{0,2}|2[0-5]{0,2})
 
-    const factorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) };
-    console.log('factorial', factorial(3));
+    // const factorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1) };
+    // console.log('factorial', factorial(3));
   </script>
 </body>
 

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midterm</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="position.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div>
+      <a href="../index.html">
+        <strong>&larr;</strong>
+        <img width="32" src="../unnamed.jpeg" alt="home" />
+      </a>
+    </div>
+    <div>Class</div>
+    <div>
+      <button>Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <ol>
+      <li>
+        <p>
+          Tricky part is absolute follows only relative position not always parent one.
+        </p>
+        <div id="main">
+          <div>
+            A<span>B</span>
+            <div id="c">
+              C
+              <div id="d">
+                D
+                <span id="e">
+                  E
+                  <span id="f">F</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <p>
+          Tricky part is <code>p .b </code> and <code>p.b </code> are different. if there is a space between element and
+          . indicator it means children not the same level.
+        </p>
+      </li>
+      <li>
+
+      </li>
+      <li>
+
+      </li>
+      <li>
+        <p>Answer is below and in the console</p>
+        <pre>
+setTimeout(() => user1.sayHi('Hi').apply(user1), 2000);
+or
+setTimeout(user1.sayHi.bind(user1), 2000, 'Hi');
+        </pre>
+      </li>
+      <li>
+        <p>
+          To see answer check inspect console and find a source file user.js from source tab.
+        </p>
+        <pre>
+function computeAverage(arr, major, course) {
+  return arr
+    .filter(s => s.major === major)
+    .filter(s => s.transcript.find(t => t.course === course))
+    .map(s => {
+      console.log(s);
+      return {
+        name: s.name,
+        average: (s.transcript
+          .reduce((result, current, index, all) => result + current.grade, 0)) / s.transcript.length
+      }
+    });
+}
+       </pre>
+      </li>
+      <li>
+        <p>
+          To see answer check inspect console and find a source file user.js from source tab.
+        </p>
+        <code id="user"></code>
+      </li>
+    </ol>
+  </div>
+  <script src="print.js"></script>
+  <script src="students.js"></script>
+  <script src="user.js"></script>
+</body>
+
+</html>

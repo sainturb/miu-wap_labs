@@ -1,0 +1,29 @@
+#main div {
+  background-color: silver;
+  color: gray;
+}
+#main div, 
+#main span {
+  border: 1px solid black;
+  padding: 2px;
+  margin: 2px;
+}
+#c {
+  position: relative;
+  height: 500px;
+}
+#d{
+  height: 100px;
+}
+#f {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+}
+p .p {
+  background-color: rgb(11, 190, 110);
+}
+p.p {
+  back
