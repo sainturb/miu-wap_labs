@@ -33,18 +33,31 @@
           Write the necessary Node script to make this code work for all arrays: [1,2,3,4,5,6,7,8].even(); // [2,4,6,8]
           [1,2,3,4,5,6,7,8].odd(); // [1,3,5,7] Test your code in Node.JS CLI
         </p>
+        <pre>
+// array module;
+Array.prototype.odd = function() { return this.filter(item => item % 2 !== 0);};
+Array.prototype.even = function() { return this.filter(item => item % 2 === 0);};
+module.exports = Array;
+
+// test module;
+const Array = require('./arrayModule');
+const arr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+console.log(arr); [1, 2, 3, 4,  5, 6, 7, 8, 9, 10]
+console.log(arr.even()); // [ 2, 4, 6, 8, 10 ]
+console.log(arr.odd()); // [ 1, 3, 5, 7, 9 ]
+        </pre>
       </li>
       <li>
         <p>Answer the following</p>
         <ol>
           <li>
-            Explain why do we want sometimes to use setImmediate instead of using setTimeout?
+            Explain why do we want sometimes to use setImmediate instead of using setTimeout? <strong>setImmediate is not guarenteed, setTimeout will delay the action</strong>
           </li>
           <li>
             Explain the difference between process.nextTick and setImmediate?
           </li>
           <li>
-            Does Node.js has window object?
+            Does Node.js has window object? <strong>No, it doesn't</strong>
           </li>
         </ol>
       </li>
