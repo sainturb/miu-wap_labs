@@ -1,0 +1,12 @@
+h1, p, a {
+  font-family: 'Courier New', Courier, monospace;
+}
+p {
+  font-size: 14px;
+}
+a {
+  font-size: 15px;
+  color: rgb(0, 72, 255);
+  font-weight: 700;
+  text-decoration: none;
+}

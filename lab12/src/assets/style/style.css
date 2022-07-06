@@ -1,0 +1,16 @@
+html, body {
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 12px;
+  margin: 0;
+}
+
+ul {
+  list-style-type:  none;
+  padding: 12px 0;
+}
+a {
+  font-size: 15px;
+  color: rgb(0, 72, 255);
+  text-decoration: none;
+}

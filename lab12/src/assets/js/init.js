@@ -1,0 +1,1 @@
+console.log('Initialized javascript file');
