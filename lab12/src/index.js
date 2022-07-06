@@ -4,11 +4,10 @@ const productRouter = require('./products/product');
 const userRouter = require('./users/user');
 
 const app = express();
-
+const port = process.env.PORT || 3000;
 app.set('env', 'development');
-app.set('port', process.env.PORT || 3000);
+app.set('port', port);
 app.enable('case sensitive routing');
-const port = app.get('port');
 
 app.use('/design', express.static(path.join(__dirname, 'assets', 'style')));
 app.use('/logic', express.static(path.join(__dirname, 'assets', 'js')));

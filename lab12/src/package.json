@@ -2,10 +2,10 @@
   "name": "src",
   "version": "1.0.0",
   "description": "Express lab",
-  "main": "express.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set PORT=9999 && set NODE_ENV=development && nodemon express.js"
+    "start": "export PORT=9999 && export NODE_ENV=development && nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saintur",
   "license": "ISC",
