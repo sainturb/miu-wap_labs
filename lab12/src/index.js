@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'views', 'home.html'));
+  res.status(200).sendFile(path.join(__dirname, 'views', 'home.html'));
 });
 
 app.use('/products', productRouter);

@@ -9,6 +9,7 @@ exports.get = (req, res, next) => {
 }
 
 exports.save = (req, res, next) => {
+  console.log(req.body);
   const saved = new Book(null, req.body.title, req.body.ISBN, req.body.publishedDate, req.body.author).save();
   res.status(201).json(saved);
 }
