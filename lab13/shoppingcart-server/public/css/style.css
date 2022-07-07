@@ -1,7 +1,7 @@
 html {
   padding: 0;
   margin: 0;
-} 
+}
 
 body {
   padding: 12px;
@@ -27,8 +27,9 @@ button.active {
   color: white;
 }
 
-
-input, textarea, select {
+input,
+textarea,
+select {
   background-color: rgba(120, 120, 120, 0.1);
   color: inherit;
   width: 80px;
@@ -58,8 +59,21 @@ a:hover {
   background: rgba(120, 120, 120, 0.2);
   border-radius: 4px;
 }
-
+tr {
+  height: 36px;
+}
+tr th {
+  background: rgba(120, 120, 120, 0.1);
+  border-radius: 6px;
+  padding: 4px 12px;
+}
 tr td {
   min-width: 83px;
   text-align: center;
+}
+
+#error {
+  color: red;
+  font-size: 13px;
+  font-style: italic;
 }
