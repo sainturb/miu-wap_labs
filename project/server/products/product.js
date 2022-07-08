@@ -96,12 +96,13 @@ module.exports = class Product {
   }
 
   static addQuantity(user) {
-    const index = cart.findIndex(c => c.user === user && c.prodId === this.prodId);
+    const i = cart.findIndex(c => c.user === user && c.prodId === this.prodId);
     // it will assume it exists because add button only available when item is in the cart
     if (this.stock > 0) {
       this.stock--;
       update();
-      cart[index].quantity++;
+      cart[i].quantity++;
+      cart[i].total = cart[i].price * cart[i].quantity;
       return userCart(user);
     } else {
       throw new Error('Unavailable stock');
@@ -109,14 +110,15 @@ module.exports = class Product {
   }
 
   static minusQuantity(user) {
-    const index = cart.findIndex(c => c.user === user && c.prodId === this.prodId);
+    const i = cart.findIndex(c => c.user === user && c.prodId === this.prodId);
      // it will assume it exists because minus button only available when item is in the cart
-    if (cart[index].quantity > 1) {
+    if (cart[i].quantity > 1) {
       this.stock++;
       update();
-      cart[index].quantity--;
+      cart[i].quantity--;
+      cart[i].total = cart[i].price * cart[i].quantity;
       return userCart(user); 
-    } else if (cart[index].quantity === 1) {
+    } else if (cart[i].quantity === 1) {
       this.stock++;
       update();
       this.removeFromCart(user);
