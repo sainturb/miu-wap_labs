@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="shortcuts icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./css/table.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo header-item">
+      <img width="32" src="./logo.jpeg" alt="home" />
+    </div>
+    <div class="header-item">Welcome <strong id="username"></strong></div>
+    <div class="header-item">
+      <button id="logout">Logout</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="table-wrapper">
+      <h4>Product list</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="product-list">
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrapper">
+      <h4>Shopping cart</h4>
+      <div id="cart-message"></div>
+      <table>
+        <thead id="cart-table">
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="cart-items">
+          <!-- <tr>
+            <td>Node.js</td>
+            <td>9.99</td>
+            <td>9.99</td>
+            <td>
+              <div class="action-number">
+                <button>-</button>
+                <input value="1" />
+                <button>+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>React</td>
+            <td>19.99</td>
+            <td>19.99</td>
+            <td>
+              <div class="action-number">
+                <button>-</button>
+                <input value="1" />
+                <button>+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Angular</td>
+            <td>29.99</td>
+            <td>29.99</td>
+            <td>
+              <div class="action-number">
+                <button>-</button>
+                <input value="1" />
+                <button>+</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <div class="total-price">
+                Total: <strong>59.97</strong>
+              </div>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <div class="bottom-action">
+      <button id="place-order">Place order</button>
+    </div>
+    <script src="logic/product.js"></script>
+    <script src="logic/element-control.js"></script>
+    <script src="logic/apis.js"></script>
+  </div>
+</body>
+
+</html>

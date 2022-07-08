@@ -1,5 +1,5 @@
 {
-  "name": "shoppingcart-server",
+  "name": "project",
   "version": "1.0.0",
   "description": "Lab 13",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "Saintur",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1"
   }
 }

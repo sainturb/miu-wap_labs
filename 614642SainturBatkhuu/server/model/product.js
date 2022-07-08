@@ -1,7 +1,28 @@
-const e = require("express");
-const { update } = require("./controller");
-
-let products = [];
+let products = [{
+  prodId: 100001,
+  name: 'NodeJS',
+  image: '/assets/node.png',
+  stock: 10,
+  price: 9.99
+}, {
+  prodId: 100002,
+  name: 'Angular',
+  image: '/assets/angular.png',
+  stock: 20,
+  price: 19.99
+}, {
+  prodId: 100003,
+  name: 'VueJS',
+  image: '/assets/vue.png',
+  stock: 4,
+  price: 29.99
+}, {
+  prodId: 100004,
+  name: 'ReactJS',
+  image: '/assets/react.png',
+  stock: 15,
+  price: 39.99
+}];
 let cart = [];
 let orders = [];
 
@@ -64,7 +85,7 @@ module.exports = class Product {
     }
   }
 
-  userCart(user) {
+  static userCart(user) {
     return cart.filter(c => c.user === user);
   }
 

@@ -1,0 +1,88 @@
+
+
+input[type="text"], 
+input[type="password"],
+input[type="current-password"], 
+input[type="new-password"], 
+textarea, 
+select {
+  background-color: rgba(120, 120, 120, 0.1);
+  color: inherit;
+  width: 80px;
+  border: none;
+  min-height: 32px;
+  border-radius: 4px;
+  min-width: 160px;
+  padding: 0 8px;
+}
+input[type="reset"],
+input[type="submit"] {
+  border-radius: 4px;
+  margin-right: 8px;
+  min-height: 32px;
+  min-width: 90px;
+  background-color: rgba(120, 120, 120, 0.1);
+  appearance: none;
+  color: inherit;
+  border: none;
+  padding: 0 8px;
+}
+
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  background: linear-gradient(rgb(85, 155, 240), rgb(32, 115, 216));
+  color: white;
+}
+input[type="checkbox"] {
+  height: 18px;
+  width: 18px;
+  min-width: 18px;
+}
+.login-button {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: inherit;
+  padding: 8px 0px;
+}
+form,
+.form{
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  max-width: 442px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.col-6 {
+  width: 50%;
+}
+.align-end-row {
+  justify-content: flex-end;
+  width: 100%;
+}
+.form-item {
+  display: inline-flex;
+  width: 100%;
+  padding: 8px 0;
+}
+.form-item label {
+  min-width: 120px;   
+   align-items: center;
+  display: inline-flex;
+  font-weight: 700;
+}
+.form-item label.inline-label {
+  display: inline-flex;
+  align-items: center;
+}
+.form-item .required {
+  color: red;
+  font-size: 14px;
+}

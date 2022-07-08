@@ -1,5 +1,4 @@
-const { findById } = require('./user');
-const User = require('./user');
+const User = require('../model/user');
 
 exports.all = (req, res, next) => {
   res.status(200).json(User.fetchAll());
@@ -25,15 +24,15 @@ exports.delete = (req, res, next) => {
 }
 
 exports.login = (req, res, next) => {
-  const token = {token: User.login(req.params.username, req.params.password)};
+  const token = {token: User.login(req.body.username, req.body.password)};
   res.status(200).json(token);
 }
 
 exports.logout = (req, res, next) => {
-  User.login(req.params.token);
+  User.login(req.headers.authorization);
   res.status(200).end();
 }
 
 exports.populate = (req, res, next) => {
-  res.status(200).json(User.populate(req.params.token));
+  res.status(200).json(User.populate(req.headers.authorization));
 }

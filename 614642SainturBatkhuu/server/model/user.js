@@ -1,4 +1,10 @@
-let users = [];
+let users = [{
+  id: 1,
+  username: 'esaintor',
+  firstname: 'Saintur',
+  lastname: 'Batkhuu',
+  password: '123456789'
+}];
 let tokens = {};
 
 module.exports = class User {
@@ -42,6 +48,7 @@ module.exports = class User {
 
   // get by id
   static findById(id) {
+    console.log(id);
     const index = users.findIndex(b => b.id === id);
     if (index === -1) {
       throw new Error('Not Found');
@@ -64,7 +71,7 @@ module.exports = class User {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
+    for (var i = 0; i < 32; i++) {
       result += characters.charAt(Math.floor(Math.random() *
         charactersLength));
     }
@@ -78,7 +85,7 @@ module.exports = class User {
     }
     const found = foundUsers.find(u => u.password === password);
     if (found) {
-      const token = generateToken();
+      const token = this.generateToken();
       tokens[token] = found; // add token
       return token;
     } else {

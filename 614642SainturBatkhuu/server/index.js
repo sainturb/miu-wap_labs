@@ -1,22 +1,31 @@
 const express = require('express');
 const path = require('path');
-const { use } = require('./products/router');
-const productRouter = require('./products/router');
-const userRouter = require('./users/router');
-const authRouter = require('./users/author');
+const cors = require('cors');
+const productRouter = require('./router/productRouter');
+const cartRouter = require('./router/cartRouter');
+const userRouter = require('./router/userRouter');
+const authRouter = require('./router/authRouter');
 // app variables
 const app = express();
 const port = process.env.PORT || 3000
+var corsOptions = {
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
+}
+// const urlencodedParser = express.urlencoded({ extended: false });
 // app setup
 app.set('port', port);
 app.set('env', 'development');
 app.enable('case sensitive routing');
-// app use
+  // app use
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use((req, res, next) => next()); // always there to run
+app.use('/assets', express.static(path.join(__dirname, 'public', 'images')))
 app.use('/auth', authRouter);
 app.all('/api/*', requireAuthentication);
 app.use('/api/products', productRouter);
+app.use('/api/cart', cartRouter);
 app.use('/api/users', userRouter);
 app.use((req, res, next) => res.status(404).send('404'));
 app.use((err, req, res, next) => {

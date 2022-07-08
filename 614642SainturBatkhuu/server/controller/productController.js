@@ -1,4 +1,4 @@
-const Product = require('./product');
+const Product = require('../model/product');
 
 exports.all = (req, res, next) => {
   res.status(200).json(Product.fetchAll());
@@ -23,27 +23,31 @@ exports.delete = (req, res, next) => {
   res.status(200).end();
 }
 
+exports.cartItems = (req, res, next) => {
+  res.status(200).json(Product.userCart(req.query.user));
+}
+
 exports.addItem = (req, res, next) => {
-  const updatedCart = Product.findById(req.params.prodId).addToCart(req.params.user);;
+  const updatedCart = Product.findById(req.query.prodId).addToCart(req.query.user);;
   res.status(200).json(updatedCart);
 }
 
 exports.removeItem = (req, res, next) => {
-  const updatedCart =  Product.findById(req.params.prodId).removeFromCart(req.params.user);
+  const updatedCart =  Product.findById(req.query.prodId).removeFromCart(req.query.user);
   res.status(200).json(updatedCart);
 }
 
 exports.addQuantity = (req, res, next) => {
-  const updatedCart = Product.findById(req.params.prodId).addQuantity(req.params.user);
+  const updatedCart = Product.findById(req.query.prodId).addQuantity(req.query.user);
   res.status(200).json(updatedCart);
 }
 
 exports.minusQuantity = (req, res, next) => {
-  const updatedCart = Product.findById(req.params.prodId).minusQuantity(req.params.user);
+  const updatedCart = Product.findById(req.query.prodId).minusQuantity(req.query.user);
   res.status(200).json(updatedCart);
 }
 
 exports.placeOrder = (req, res, next) => {
-  const updatedCart = Product.findById(req.params.prodId).placeOrder(req.params.user);
+  const updatedCart = Product.findById(req.query.prodId).placeOrder(req.query.user);
   res.status(200).json(updatedCart);
 }
