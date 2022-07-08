@@ -1,14 +1,17 @@
+const e = require("express");
+const { update } = require("./controller");
+
 let products = [];
 let cart = [];
 
-module.exports = class Item {
+module.exports = class Product {
 
-  constructor(prodId, name, quantity, price) {
+  constructor(prodId, name, image, stock, price) {
     this.prodId = prodId;
-    this.username = username;
-    this.username = username;
-    this.price = price;
+    this.name = name;
     this.image = image;
+    this.stock = stock;
+    this.price = price;
   }
 
   generateId() {
@@ -64,55 +67,61 @@ module.exports = class Item {
     return cart.filter(c => c.user === user);
   }
 
-  static addToCart(prodId, user) {
-    const index = products.findIndex(b => b.prodId === prodId);
-    if (index === -1) {
-      throw new Error('Not Found');
-    } else {
-      cart.push({ user, ...products[index] });
+  static addToCart(user) {
+    if (this.stock > 0) {
+      this.stock--;
+      update();
+      cart.push({
+        user,
+        prodId: this.prodId,
+        name: this.name,
+        quantity: 1,
+        price: this.price,
+        total: this.price * 1
+      });
       return userCart();
+    } else {
+      throw new Error('Unavailable stock');
     }
   }
 
-  static removeFromCart(prodId, user) {
-    if (index === -1) {
-      throw new Error('Not Found');
+  static removeFromCart(user) {
+    const item = cart.find(c => c.user === user && c.prodId === this.prodId);
+    // it will assume it exists because remove button only available when item is in the cart
+    this.stock += item.quantity;
+    update();
+    cart.splice(cart.indexOf(item), 1);
+    return userCart();
+  }
+
+  static addQuantity(user) {
+    const index = cart.findIndex(c => c.user === user && c.prodId === this.prodId);
+    // it will assume it exists because add button only available when item is in the cart
+    if (this.stock > 0) {
+      this.stock--;
+      update();
+      cart[index].quantity++;
+      return userCart();
     } else {
-      const cartIndex = cart.findIndex(c => c.user === user && c.prodId === prodId);
-      if (cartIndex !== -1) {
-        cart.splice(cartIndex, 1);
-        return userCart();
-      } else {
-        throw new Error('Not Found');
-      }
+      throw new Error('Unavailable stock');
     }
   }
 
-  static addQuantity(prodId, user) {
-    const cartIndex = cart.findIndex(c => c.user === user && c.prodId === prodId);
-    if (cartIndex === -1) {
-      throw new Error('Not Found');
+  static minusQuantity(user) {
+    const index = cart.findIndex(c => c.user === user && c.prodId === this.prodId);
+     // it will assume it exists because minus button only available when item is in the cart
+    if (cart[index].quantity > 1) {
+      this.stock++;
+      update();
+      cart[index].quantity--;
+      return userCart(); 
+    } else if (cart[index].quantity === 1) {
+      this.stock++;
+      update();
+      this.removeFromCart(user);
+      return userCart();
     } else {
-      if (cart[cartIndex].quantity < 10) {
-        cart[cartIndex].quantity++;
-        return userCart();
-      } else {
-        throw new Error('cannot be more than 10');
-      }
-    }
-  }
-
-  static minusQuantity(prodId, user) {
-    const cartIndex = cart.findIndex(c => c.user === user && c.prodId === prodId);
-    if (cartIndex === -1) {
-      throw new Error('Not Found');
-    } else {
-      if (cart[cartIndex].quantity > 0) {
-        cart[cartIndex].quantity--;
-        return userCart();
-      } else {
-        throw new Error('cannot be less than 0');
-      }
+      return userCart();
     }
   }
 }
