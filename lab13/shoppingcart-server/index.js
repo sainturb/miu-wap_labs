@@ -5,6 +5,7 @@ const bookRouter = require('./books/router')
 const app = express();
 
 app.enable('case sensitive routing');
+
 app.use(express.json());
 
 app.use('/design', express.static(path.join(__dirname, 'public', 'css')));

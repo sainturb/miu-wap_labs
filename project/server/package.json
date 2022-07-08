@@ -1,0 +1,15 @@
+{
+  "name": "shoppingcart-server",
+  "version": "1.0.0",
+  "description": "Lab 13",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "export PORT=4000 && export NODE_ENV=development && nodemon app.js"
+  },
+  "author": "Saintur",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
