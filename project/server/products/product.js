@@ -3,6 +3,7 @@ const { update } = require("./controller");
 
 let products = [];
 let cart = [];
+let orders = [];
 
 module.exports = class Product {
 
@@ -63,7 +64,7 @@ module.exports = class Product {
     }
   }
 
-  userCart() {
+  userCart(user) {
     return cart.filter(c => c.user === user);
   }
 
@@ -79,7 +80,7 @@ module.exports = class Product {
         price: this.price,
         total: this.price * 1
       });
-      return userCart();
+      return userCart(user);
     } else {
       throw new Error('Unavailable stock');
     }
@@ -91,7 +92,7 @@ module.exports = class Product {
     this.stock += item.quantity;
     update();
     cart.splice(cart.indexOf(item), 1);
-    return userCart();
+    return userCart(user);
   }
 
   static addQuantity(user) {
@@ -101,7 +102,7 @@ module.exports = class Product {
       this.stock--;
       update();
       cart[index].quantity++;
-      return userCart();
+      return userCart(user);
     } else {
       throw new Error('Unavailable stock');
     }
@@ -114,14 +115,24 @@ module.exports = class Product {
       this.stock++;
       update();
       cart[index].quantity--;
-      return userCart(); 
+      return userCart(user); 
     } else if (cart[index].quantity === 1) {
       this.stock++;
       update();
       this.removeFromCart(user);
-      return userCart();
+      return userCart(user);
     } else {
-      return userCart();
+      return userCart(user);
     }
   }
+
+  static placeOrder(user) {
+    const cartItems = JSON.parse(JSON.stringify(userCart(user)));
+    cartItems.forEach(item => {
+      cart.splice(cart.findIndex(c => c.user === user && c.prodId === item.prodId), 1); // remove from cart
+      orders.push({...item, orderedDate: new Date()}); // add it to orders
+    });
+    return userCart(user);
+  }
+
 }

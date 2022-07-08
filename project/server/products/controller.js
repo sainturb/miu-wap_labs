@@ -34,11 +34,16 @@ exports.removeItem = (req, res, next) => {
 }
 
 exports.addQuantity = (req, res, next) => {
-  const updatedCart = Product.findById(req.params.prodId).addQuantity(req.params.prodId, req.params.user);
+  const updatedCart = Product.findById(req.params.prodId).addQuantity(req.params.user);
   res.status(200).json(updatedCart);
 }
 
 exports.minusQuantity = (req, res, next) => {
-  const updatedCart = Product.findById(req.params.prodId).minusQuantity(req.params.prodId, req.params.user);
+  const updatedCart = Product.findById(req.params.prodId).minusQuantity(req.params.user);
+  res.status(200).json(updatedCart);
+}
+
+exports.placeOrder = (req, res, next) => {
+  const updatedCart = Product.findById(req.params.prodId).placeOrder(req.params.user);
   res.status(200).json(updatedCart);
 }
