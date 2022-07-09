@@ -18,7 +18,6 @@ module.exports = class Cart {
     if (item) {
       throw new Error('Already added item');
     } else {
-      Product.reduceStock(prodId);
       cart.push({
         user,
         prodId: product.prodId,
@@ -34,7 +33,6 @@ module.exports = class Cart {
   static removeFromCart(user, prodId) {
     const item = this.ifExist(user, prodId);
     if (item) {
-      Product.increaseStock(prodId, item.quantity);
       cart.splice(cart.indexOf(item), 1);
       return cart.filter(c => c.user === user);
     } else {
@@ -52,19 +50,20 @@ module.exports = class Cart {
   }
 
   static addQuantity(user, prodId) {
+    const product = Product.findById(prodId);
     const i = cart.findIndex(c => c.user === user && c.prodId === prodId);
-    // it will assume it exists because add button only available when item is in the cart
-    Product.reduceStock(prodId);
-    cart[i].quantity++;
-    cart[i].total = cart[i].price * cart[i].quantity;
-    return cart.filter(c => c.user === user);
+    if (cart[i].quantity < product.stock) {
+      cart[i].quantity++;
+      cart[i].total = cart[i].price * cart[i].quantity;
+      return cart.filter(c => c.user === user);
+    } else {
+      throw new Error('Stock limit is exceeded');
+    }
   }
 
   static minusQuantity(user, prodId) {
     const i = cart.findIndex(c => c.user === user && c.prodId === prodId);
-    // it will assume it exists because minus button only available when item is in the cart
     if (cart[i].quantity > 1) {
-      Product.increaseStock(prodId, 1)
       cart[i].quantity--;
       cart[i].total = cart[i].price * cart[i].quantity;
     } else if (cart[i].quantity === 1) {

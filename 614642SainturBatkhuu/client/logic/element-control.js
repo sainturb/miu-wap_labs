@@ -97,14 +97,14 @@ var addColumnQuantity = (tr, item) => {
   return tr;
 }
 // stock +
-var stockIncreaser = (prodId) => {
-  const td = document.getElementById(`product-${prodId}`).children.item(3);
-  td.innerText = ++td.innerText;
+var stockIncreaser = function() {
+  const td = document.getElementById(`product-${this.prodId}`).children.item(3);
+  td.innerText = +td.innerText + this.quantity;
 }
 // stock -
-var stockReducer = (prodId) => {
-  const td = document.getElementById(`product-${prodId}`).children.item(3);
-  td.innerText = --td.innerText;
+var stockReducer = function() {
+  const td = document.getElementById(`product-${this.prodId}`).children.item(3);
+  td.innerText = +td.innerText - this.quantity;
 }
 // remove all items from cart
 var removeAllFromCart = () => {
@@ -125,18 +125,14 @@ var removeElementFromCart = (prodId) => {
 }
 // add to cart button
 var addButton = function () {
-  // console.log(product);
-  console.log(this);
-  // return function () {
   // TO-DO add to cart check if exist already
   if (document.getElementById(`item-${this.prodId}`)) {
-    alert('already added');
+    quantityAdd.call({user: user.id, prodId: this.prodId});
   } else {
     addToCart(token, user.id, this.prodId).then(response => {
       if (response.error) {
         alert(response.error);
       } else {
-        stockReducer(this.prodId);
         const item = {
           prodId: this.prodId,
           user: user.id,
@@ -152,14 +148,13 @@ var addButton = function () {
       }
     });
   }
-  // }
 }
 // add quantity item in cart
 var quantityAdd = function () {
   addQuantity(token, this.user, this.prodId)
     .then(response => {
       if (response.error) {
-        alert('Stock unavailable');
+        alert('Stock limit is exceeded');
       } else {
         const updated = response.find(i => i.user.toString() === this.user.toString() && i.prodId === this.prodId)
         const td = document.getElementById(`item-${this.prodId}`).children.item(3);
@@ -167,7 +162,6 @@ var quantityAdd = function () {
         price.innerText = updated.total.toFixed(2);;
         const input = td.children.item(1);
         input.value = updated.quantity;
-        stockReducer(this.prodId);
       }
       updateTotal();
     })
@@ -177,7 +171,6 @@ var quantityMinus = function () {
   minusQuantity(token, this.user, this.prodId)
     .then(response => {
       if (response.length === 0) {
-        stockIncreaser(this.prodId)
         removeElementFromCart(this.prodId)
         document.getElementById('cart-message').innerText = 'There is no item in your shopping cart';
         hideCartElements();
@@ -189,9 +182,7 @@ var quantityMinus = function () {
           price.innerText = updated.total.toFixed(2);;
           const input = td.children.item(1);
           input.value = updated.quantity;
-          stockIncreaser(this.prodId)
         } else {
-          stockIncreaser(this.prodId)
           removeElementFromCart(this.prodId)
         }
       }

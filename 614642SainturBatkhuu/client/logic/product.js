@@ -19,6 +19,7 @@ window.onload = function () {
     placeOrder(token, user.id)
     .then(response => {
       removeAllFromCart();
+      response.forEach(item => stockReducer.bind(item)());
     });
   })
 }

@@ -1,6 +1,7 @@
 let orders = [];
 
 const Cart = require('../models/cart');
+const Product = require('../models/product');
 
 module.exports = class Order {
 
@@ -24,10 +25,11 @@ module.exports = class Order {
     const orderedDate = new Date();
     if (cartItems.length > 0) {
       cartItems.forEach(item => {
+        Product.reduceStock(item.prodId, item.quantity);
         Cart.deleteFromCart(user, item.prodId); // delete from cart without changin the stock
         orders.push({ ...item, id: this.generateId().toString(), orderedDate, orderNumber }); // add it to orders
       });
-      return orders.filter(o => o.user === user);
+      return orders.filter(o => o.user === user && o.orderNumber === orderNumber);
     } else {
       throw new Error('empty cart');
     }

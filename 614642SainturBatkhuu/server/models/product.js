@@ -61,15 +61,15 @@ module.exports = class Product {
     }
   }
 
-  static reduceStock(prodId) {
+  static reduceStock(prodId, quantity) {
     const i = products.findIndex(b => b.prodId === prodId);
     if (i === -1) {
       throw new Error('Not Found');
     } else {
       if (products[i].stock > 0) {
-        products[i].stock--
+        products[i].stock -= quantity;
       } else {
-        throw new Error('Stock unavailable');
+        throw new Error('Stock limit is exceeded');
       }
     }
   }
