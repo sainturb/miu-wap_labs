@@ -71,28 +71,34 @@ var addColumnImage = (tr, asset) => {
 // add button to td
 var addColumnButton = (tr, label, product) => {
   const td = document.createElement('td');
-  const button = document.createElement('button');
-  button.innerText = label;
-  button.onclick = () => addButton.call(product);
-  td.appendChild(button);
+  const anchor = document.createElement('a');
+  const img = document.createElement('img');
+  img.src = './cart.svg';
+  img.alt = label;
+  img.style.width = '24px';
+  anchor.onclick = () => addButton.call(product);
+  anchor.appendChild(img);
+  td.appendChild(anchor);
   tr.appendChild(td);
   return tr;
 }
 // add quantity to td
 var addColumnQuantity = (tr, item) => {
   const td = document.createElement('td');
+  const div = document.createElement('div');
   const minus = document.createElement('button');
   const input = document.createElement('input');
   const add = document.createElement('button');
-  td.className = 'action-number'
+  div.className = 'action-number'
   minus.innerText = '-';
   minus.onclick = () => quantityMinus.call(item);
   input.value = item.quantity;
   add.innerText = '+';
   add.onclick = () => quantityAdd.call(item);
-  td.appendChild(minus);
-  td.appendChild(input);
-  td.appendChild(add);
+  div.appendChild(minus);
+  div.appendChild(input);
+  div.appendChild(add);
+  td.appendChild(div);
   tr.appendChild(td);
   return tr;
 }
@@ -158,9 +164,10 @@ var quantityAdd = function () {
       } else {
         const updated = response.find(i => i.user.toString() === this.user.toString() && i.prodId === this.prodId)
         const td = document.getElementById(`item-${this.prodId}`).children.item(3);
+        const div = td.children.item(0);
         const price = document.getElementById(`item-${this.prodId}`).children.item(2);
         price.innerText = updated.total.toFixed(2);;
-        const input = td.children.item(1);
+        const input = div.children.item(1);
         input.value = updated.quantity;
       }
       updateTotal();
@@ -179,8 +186,9 @@ var quantityMinus = function () {
         if (updated) {
           const td = document.getElementById(`item-${this.prodId}`).children.item(3);
           const price = document.getElementById(`item-${this.prodId}`).children.item(2);
-          price.innerText = updated.total.toFixed(2);;
-          const input = td.children.item(1);
+          price.innerText = updated.total.toFixed(2);
+          const div = td.children.item(0);
+          const input = div.children.item(1);
           input.value = updated.quantity;
         } else {
           removeElementFromCart(this.prodId)
