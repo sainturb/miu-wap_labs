@@ -70,3 +70,10 @@ table tr td img {
 .validation {
   padding: 16px;
 }
+.total-element {
+  text-align: right;
+}
+
+.total-element td {
+  padding: 8px 42px;
+}

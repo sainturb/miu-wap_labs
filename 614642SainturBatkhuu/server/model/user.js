@@ -4,6 +4,12 @@ let users = [{
   firstname: 'Saintur',
   lastname: 'Batkhuu',
   password: '123456789'
+}, {
+  id: 2,
+  username: 'tester',
+  firstname: 'Test',
+  lastname: 'User',
+  password: '987654321'
 }];
 let tokens = {};
 

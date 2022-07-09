@@ -13,7 +13,7 @@ var fillProductRow = (product) => {
   let tr = document.createElement('tr');
   tr = addColumnImage(tr, product.image);
   tr = addColumnValue(tr, product.name);
-  tr = addColumnValue(tr, product.price);
+  tr = addColumnValue(tr, product.price.toFixed(2));
   tr = addColumnValue(tr, product.stock);
   tr = addColumnButton(tr, 'Add to cart', getAddToCartButton(product));
   tr.id = `product-${product.prodId}`;
@@ -29,6 +29,7 @@ var fillCartTable = (items) => {
   }
   const body = document.getElementById('cart-items');
   items.forEach(item => body.appendChild(fillCartRow(item)))
+  updateTotal();
 }
 // show cart elements
 var showCartElements = () => {
@@ -45,8 +46,8 @@ var hideCartElements = () => {
 var fillCartRow = (item) => {
   let tr = document.createElement('tr');
   tr = addColumnValue(tr, item.name);
-  tr = addColumnValue(tr, item.price);
-  tr = addColumnValue(tr, item.total);
+  tr = addColumnValue(tr, item.price.toFixed(2));
+  tr = addColumnValue(tr, item.total.toFixed(2));
   tr = addColumnQuantity(tr, item.quantity, getMinusQuantityButton(item), getAddQuantityButton(item));
   tr.id = `item-${item.prodId}`;
   return tr;
@@ -104,7 +105,7 @@ var getAddToCartButton = (product) => {
     } else {
       addToCart(token, user.id, product.prodId).then(response => {
         if (response.error) {
-
+          alert(response.error);
         } else {
           stockReducer(product.prodId);
           const item = {
@@ -118,6 +119,7 @@ var getAddToCartButton = (product) => {
           const body = document.getElementById('cart-items');
           body.appendChild(fillCartRow(item));
           showCartElements();
+          updateTotal();
         }
       });
     }
@@ -165,11 +167,12 @@ var getAddQuantityButton = (item) => {
           const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
           const td = document.getElementById(`item-${item.prodId}`).children.item(3);
           const price = document.getElementById(`item-${item.prodId}`).children.item(2);
-          price.innerText = updated.total;
+          price.innerText = updated.total.toFixed(2);;
           const input = td.children.item(1);
           input.value = updated.quantity;
-          stockReducer(item.prodId)
+          stockReducer(item.prodId);
         }
+        updateTotal();
       })
   }
 }
@@ -188,7 +191,7 @@ var getMinusQuantityButton = (item) => {
           if (updated) {
             const td = document.getElementById(`item-${item.prodId}`).children.item(3);
             const price = document.getElementById(`item-${item.prodId}`).children.item(2);
-            price.innerText = updated.total;
+            price.innerText = updated.total.toFixed(2);;
             const input = td.children.item(1);
             input.value = updated.quantity;
             stockIncreaser(item.prodId)
@@ -197,6 +200,17 @@ var getMinusQuantityButton = (item) => {
             removeElementFromCart(item.prodId)
           }
         }
+        updateTotal();
       });
   }
+}
+
+var updateTotal = () => {
+  const body = document.getElementById('cart-items');
+  let total = 0;
+  for (var i = 0; i < body.children.length; i++) {
+    total += +body.children.item(i).children.item(2).innerText;
+  }
+  console.log(total);
+  document.getElementById('total').innerText = total.toFixed(2);
 }
