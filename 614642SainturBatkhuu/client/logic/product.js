@@ -18,8 +18,12 @@ window.onload = function () {
     event.preventDefault();
     placeOrder(token, user.id)
     .then(response => {
-      removeAllFromCart();
-      response.forEach(item => stockReducer.bind(item)());
+      if (response.error) {
+        alert(response.error);
+      } else {
+        removeAllFromCart();
+        response.forEach(item => stockReducer.bind(item)());
+      }
     });
   })
 }
