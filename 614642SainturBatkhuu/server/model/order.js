@@ -20,10 +20,12 @@ module.exports = class Order {
 
   static placeOrder(user) {
     const cartItems = JSON.parse(JSON.stringify(Cart.getCart(user)));
+    const orderNumber =  this.generateId().toString();
+    const orderedDate = new Date();
     if (cartItems.length > 0) {
       cartItems.forEach(item => {
         Cart.deleteFromCart(user, item.prodId);
-        orders.push({ ...item, orderedDate: new Date(), id: this.generateId().toString() }); // add it to orders
+        orders.push({ ...item, id: this.generateId().toString(), orderedDate, orderNumber }); // add it to orders
       });
       return orders.filter(o => o.user === user);
     } else {

@@ -22,8 +22,3 @@ exports.delete = (req, res, next) => {
   Product.deleteById(req.params.prodId);
   res.status(200).end();
 }
-
-exports.placeOrder = (req, res, next) => {
-  const updatedCart = Product.findById(req.query.prodId).placeOrder(req.query.user);
-  res.status(200).json(updatedCart);
-}
