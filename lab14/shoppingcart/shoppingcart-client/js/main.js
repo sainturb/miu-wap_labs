@@ -87,6 +87,7 @@ window.onload = function () {
         .then(response => response.json())
         .then(data => {
           location.assign(`${clientURL}/index.html`);
+          // history.back();
         });
     });
   }

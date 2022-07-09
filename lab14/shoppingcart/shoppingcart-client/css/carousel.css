@@ -48,7 +48,8 @@ select {
   margin-bottom: 4px;
 }
 
-form label {
+form label,
+.form label {
   min-width: 120px;
   display: inline-block;
 }
