@@ -52,7 +52,7 @@ function isValidToken(token) {
   const buf = Buffer.from(token, 'base64');
   const str = buf.toString('utf-8');
   if (str.split('|').length !== 2) {
-    return false;
+    return false; // token format is wrong
   }
   try {
     const date = new Date(str.split('|')[1]);
