@@ -51,5 +51,15 @@ function requireAuthentication (req, res, next) {
 function isValidToken(token) {
   const buf = Buffer.from(token, 'base64');
   const str = buf.toString('utf-8');
-  return str.split('|').length === 2;
+  if (str.split('|').length !== 2) {
+    return false;
+  }
+  try {
+    const date = new Date(str.split('|')[1]);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+    return (diff / (1000*60*60)) < 8 // check it is less then 8 hours
+  } catch (e) {
+    return false;
+  }
 }
