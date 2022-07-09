@@ -11,7 +11,6 @@ let users = [{
   lastname: 'User',
   password: '987654321'
 }];
-// let tokens = {};
 module.exports = class User {
 
   constructor(id, username, password, firstname, lastname) {
@@ -72,16 +71,8 @@ module.exports = class User {
   }
 
   static generateToken(username) {
-    // var result = '';
-    // var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    // var charactersLength = characters.length;
-    // for (var i = 0; i < 32; i++) {
-    //   result += characters.charAt(Math.floor(Math.random() *
-    //     charactersLength));
-    // }
-    // return result;
     var date = new Date().toISOString();
-    var result = `${username}:${date}`;
+    var result = `${username}|${date}`;
     const buf = Buffer.from(result, 'utf-8');
     return buf.toString('base64');
   }
@@ -103,7 +94,7 @@ module.exports = class User {
     try {
       const buf = Buffer.from(token, 'base64');
       const str = buf.toString('utf-8');
-      const username = str.split(':')[0];
+      const username = str.split('|')[0];
       const user = users.find(u => u.username === username)
       if (user) {
         return user;
@@ -115,8 +106,4 @@ module.exports = class User {
       throw new Error(`Access denied`);
     }
   }
-
-  // static isValidToken(token) {
-  //   return tokens[token] ? true : false;
-  // }
 }

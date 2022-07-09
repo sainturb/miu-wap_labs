@@ -6,7 +6,6 @@ const Product = require('../models/product');
 module.exports = class Order {
 
   constructor() {
-
   }
 
   static generateId() {

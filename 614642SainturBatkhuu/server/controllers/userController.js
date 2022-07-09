@@ -28,11 +28,6 @@ exports.login = (req, res, next) => {
   res.status(200).json(token);
 }
 
-// exports.logout = (req, res, next) => {
-//   User.login(req.headers.authorization);
-//   res.status(200).end();
-// }
-
 exports.populate = (req, res, next) => {
   res.status(200).json(User.populate(req.headers.authorization));
 }

@@ -18,14 +18,8 @@ var populate = (token) => {
 }
 
 var logout = (token) => {
-  fetch(`${serverURL}/auth/logout`, {
-    headers: {
-      authorization: token
-    }
-  }).then(response => {
-    sessionStorage.removeItem('access_token');
-    location.assign(`${clientURL}/index.html`)
-  })
+  sessionStorage.removeItem('access_token');
+  location.assign(`${clientURL}/index.html`)
 }
 
 var fetchAllProducts = (token) => {

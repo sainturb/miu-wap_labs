@@ -6,7 +6,6 @@ const orderRouter = require('./routes/orderRouter');
 const cartRouter = require('./routes/cartRouter');
 const userRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
-const auth = require('./models/user');
 // app variables
 const app = express();
 const port = process.env.PORT || 3000
@@ -14,7 +13,6 @@ var corsOptions = {
   "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
 }
-// const urlencodedParser = express.urlencoded({ extended: false });
 // app setup
 app.set('port', port);
 app.set('env', 'development');
@@ -43,7 +41,7 @@ app.use((err, req, res, next) => {
 // app listen
 app.listen(port, () => { console.log('listening on ' + port) });
 function requireAuthentication (req, res, next) {
-  if (req.headers.authorization) {
+  if (req.headers.authorization && isValidToken(req.headers.authorization)) {
     next();
   } else {
     throw new Error('Unauthorized')
@@ -51,6 +49,7 @@ function requireAuthentication (req, res, next) {
 }
 
 function isValidToken(token) {
-  const str = Buffer.toString(token);
-  return str.split(':').length === 2
+  const buf = Buffer.from(token, 'base64');
+  const str = buf.toString('utf-8');
+  return str.split('|').length === 2;
 }
