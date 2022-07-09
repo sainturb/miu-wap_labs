@@ -1,11 +1,11 @@
 let users = [{
-  id: 1,
+  id: '1',
   username: 'esaintor',
   firstname: 'Saintur',
   lastname: 'Batkhuu',
   password: '123456789'
 }, {
-  id: 2,
+  id: '2',
   username: 'tester',
   firstname: 'Test',
   lastname: 'User',
@@ -23,7 +23,7 @@ module.exports = class User {
     this.lastname = lastname;
   }
 
-  static generateId() {
+  generateId() {
     const min = Math.ceil(1);
     const max = Math.floor(1000000);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive

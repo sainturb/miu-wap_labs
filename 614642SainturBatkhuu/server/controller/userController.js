@@ -9,12 +9,12 @@ exports.get = (req, res, next) => {
 }
 
 exports.save = (req, res, next) => {
-  const saved = new User(null, req.body.name, req.body.price, req.body.image).save();
+  const saved = new User(null, req.body.username, req.body.password, req.body.firstname, req.body.lastname).save();
   res.status(201).json(saved);
 }
 
 exports.update = (req, res, next) => {
-  const updated = new User(req.params.id, req.body.name, req.body.price, req.body.image).update();
+  const updated = new User(req.params.id, req.body.username, req.body.password, req.body.firstname, req.body.lastname).update();
   res.status(201).json(updated);
 }
 
