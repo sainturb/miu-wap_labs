@@ -7,10 +7,11 @@ var populate = (token) => {
     .then(response => response.json())
     .then(response => {
       if (response.firstname) {
-        document.getElementById('username').innerText = `, ${response.firstname} ${response.lastname} !`
+        document.getElementById('username').innerText = `, ${response.firstname} ${response.lastname} !`;
+        user = response;
       } else {
         sessionStorage.removeItem('access_token');
-        location.assign(`${clientURL}/client/index.html`)
+        location.assign(`${clientURL}/client/index.html`);
       }
     });
 }
@@ -46,6 +47,24 @@ var fetchCartItems = (token) => {
   .then(response => {
     fillCartTable(response)
   });
+}
+
+var addToCart = (token, user, prodId) => {
+  return fetch(`${serverURL}/api/cart?user=${user}&prodId=${prodId}`, {
+    method: 'POST',
+    headers: {
+      authorization: token
+    }
+  }).then(response => response.json());
+}
+
+var removeFromCart = (token) => {
+  return fetch(`${serverURL}/api/cart`, {
+    method: 'DELETE',
+    headers: {
+      authorization: token
+    }
+  }).then(response => response.json());
 }
 
 var placeOrder = (token) => {

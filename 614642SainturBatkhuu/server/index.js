@@ -22,7 +22,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use((req, res, next) => next()); // always there to run
 app.use('/assets', express.static(path.join(__dirname, 'public', 'images')))
-app.use('/auth', authRouter);
+app.use('/auth', authRouter); // public api
 app.all('/api/*', requireAuthentication);
 app.use('/api/products', productRouter);
 app.use('/api/cart', cartRouter);
