@@ -1,9 +1,9 @@
-var clientURL = location.origin;
+var clientURL = location.origin + location.pathname.split('/').slice(0, location.pathname.split('/').length - 1).join('/');
 var serverURL = `http://127.0.0.1:4000`;
 
 window.onload = function() {
   document.getElementById("form").addEventListener("click", login);
-  const redirectURL = `${clientURL}/client/cart.html`;
+  const redirectURL = `${clientURL}/cart.html`;
   if (sessionStorage.getItem('access_token')) {
     location.assign(redirectURL)
   }

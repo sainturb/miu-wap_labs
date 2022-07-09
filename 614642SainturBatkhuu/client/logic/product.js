@@ -1,4 +1,4 @@
-var clientURL = `http://127.0.0.1:5500`;
+var clientURL = location.origin + location.pathname.split('/').slice(0, location.pathname.split('/').length - 1).join('/');
 var serverURL = `http://127.0.0.1:4000`;
 let token = null;
 let user = null;
@@ -8,7 +8,7 @@ window.onload = function () {
     populate(token);
     fetchAllProducts(token);
   } else {
-    location.assign(`${clientURL}/client/index.html`)
+    location.assign(`${clientURL}/index.html`)
   }
   document.getElementById('logout').addEventListener('click', (event) => {
     event.preventDefault();

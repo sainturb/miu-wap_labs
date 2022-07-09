@@ -12,7 +12,7 @@ var populate = (token) => {
         fetchCartItems(token, user.id);
       } else {
         sessionStorage.removeItem('access_token');
-        location.assign(`${clientURL}/client/index.html`);
+        location.assign(`${clientURL}/index.html`);
       }
     });
 }
@@ -24,7 +24,7 @@ var logout = (token) => {
     }
   }).then(response => {
     sessionStorage.removeItem('access_token');
-    location.assign(`${clientURL}/client/index.html`)
+    location.assign(`${clientURL}/index.html`)
   })
 }
 
