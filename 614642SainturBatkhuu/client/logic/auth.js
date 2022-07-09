@@ -24,7 +24,6 @@ function login() {
     .then(response => response.json())
     .then(response => {
       if (response.error) {
-        console.log(response)
         document.getElementById('error').innerText = response.error;
       } else {
         sessionStorage.setItem('access_token', response.token);

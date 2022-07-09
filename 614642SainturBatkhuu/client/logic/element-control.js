@@ -211,6 +211,5 @@ var updateTotal = () => {
   for (var i = 0; i < body.children.length; i++) {
     total += +body.children.item(i).children.item(2).innerText;
   }
-  console.log(total);
   document.getElementById('total').innerText = total.toFixed(2);
 }
