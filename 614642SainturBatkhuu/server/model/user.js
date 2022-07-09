@@ -80,7 +80,7 @@ module.exports = class User {
   static login(username, password) {
     const foundUsers = users.filter(b => b.username === username);
     if (foundUsers.length === 0) {
-      throw new Error(`Username doesn't exist`);
+      throw new Error(`User doesn't exist`);
     }
     const found = foundUsers.find(u => u.password === password);
     if (found) {

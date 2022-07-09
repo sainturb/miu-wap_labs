@@ -39,11 +39,17 @@ input[type="checkbox"] {
   min-width: 18px;
 }
 .login-button {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
   height: inherit;
   padding: 8px 0px;
+}
+#error {
+  font-size: 14px;
+  font-style: italic;
+  color: rgb(214, 17, 83);
 }
 form,
 .form{

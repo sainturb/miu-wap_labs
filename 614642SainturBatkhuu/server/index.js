@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
   } else if (err.message === 'Not Found') {
     res.status(404).json({ error: err.message });
   } else {
-    res.status(500).json({ error: 'Something is wrong! Try later' });
+    res.status(500).json({ error: err.message });
   }
 });
 // app listen

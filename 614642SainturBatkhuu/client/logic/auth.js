@@ -9,6 +9,7 @@ window.onload = function() {
   }
 
 function login() {
+  document.getElementById('error').innerText = '';
   const body = {
     username: document.getElementById('username').value,
     password: document.getElementById('password').value
@@ -22,8 +23,13 @@ function login() {
   })
     .then(response => response.json())
     .then(response => {
-      sessionStorage.setItem('access_token', response.token);
-      location.assign(redirectURL)
+      if (response.error) {
+        console.log(response)
+        document.getElementById('error').innerText = response.error;
+      } else {
+        sessionStorage.setItem('access_token', response.token);
+        location.assign(redirectURL)
+      }
     });
 }
 }
