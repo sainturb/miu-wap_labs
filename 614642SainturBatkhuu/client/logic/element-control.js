@@ -133,6 +133,18 @@ var stockReducer = (prodId) => {
   const td = document.getElementById(`product-${prodId}`).children.item(3);
   td.innerText = --td.innerText;
 }
+// remove all items from cart
+var removeAllFromCart = () => {
+  const parent = document.getElementById('cart-items');
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  document.getElementById('cart-message').innerText = 'Items are succussfully placed in order';
+  hideCartElements();
+  setTimeout(() => {
+    document.getElementById('cart-message').innerText = 'There is no item in your shopping cart';
+  }, 5000)
+}
 // 
 var getRemoveFromCartButton = (prodId) => {
   return function () {}
@@ -147,13 +159,17 @@ var getAddQuantityButton = (item) => {
   return function () {
     addQuantity(token, item.user, item.prodId)
       .then(response => {
-        const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
-        const td = document.getElementById(`item-${item.prodId}`).children.item(3);
-        const price = document.getElementById(`item-${item.prodId}`).children.item(2);
-        price.innerText = updated.total;
-        const input = td.children.item(1);
-        input.value = updated.quantity;
-        stockReducer(item.prodId)
+        if (response.error) {
+          alert('Stock unavailable');
+        } else {
+          const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
+          const td = document.getElementById(`item-${item.prodId}`).children.item(3);
+          const price = document.getElementById(`item-${item.prodId}`).children.item(2);
+          price.innerText = updated.total;
+          const input = td.children.item(1);
+          input.value = updated.quantity;
+          stockReducer(item.prodId)
+        }
       })
   }
 }

@@ -10,6 +10,15 @@ window.onload = function () {
   } else {
     location.assign(`${clientURL}/client/index.html`)
   }
-  document.getElementById('logout').addEventListener('click', () => {logout(token)});
-  document.getElementById('place-order').addEventListener('click', () => {placeOrder(token)})
+  document.getElementById('logout').addEventListener('click', (event) => {
+    event.preventDefault();
+    logout(token);
+  });
+  document.getElementById('place-order').addEventListener('click', (event) => {
+    event.preventDefault();
+    placeOrder(token, user.id)
+    .then(response => {
+      removeAllFromCart();
+    });
+  })
 }

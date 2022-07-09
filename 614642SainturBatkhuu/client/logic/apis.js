@@ -86,6 +86,11 @@ var minusQuantity = (token, user, prodId) => {
   }).then(response => response.json());
 }
 
-var placeOrder = (token) => {
-  console.log('place order is here');
+var placeOrder = (token, user) => {
+  return fetch(`${serverURL}/api/orders/place-order?user=${user}`, {
+    method: 'POST',
+    headers: {
+      authorization: token
+    }
+  }).then(response => response.json());
 }

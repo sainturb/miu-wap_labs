@@ -42,6 +42,15 @@ module.exports = class Cart {
     }
   }
 
+  static deleteFromCart(user, prodId) {
+    const item = this.ifExist(user, prodId);
+    if (item) {
+      cart.splice(cart.indexOf(item), 1);
+    } else {
+      throw new Error('No such item');
+    }
+  }
+
   static addQuantity(user, prodId) {
     const i = cart.findIndex(c => c.user === user && c.prodId === prodId);
     // it will assume it exists because add button only available when item is in the cart

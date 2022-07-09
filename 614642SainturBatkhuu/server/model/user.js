@@ -17,7 +17,7 @@ module.exports = class User {
     this.lastname = lastname;
   }
 
-  generateId() {
+  static generateId() {
     const min = Math.ceil(1);
     const max = Math.floor(1000000);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
@@ -48,7 +48,6 @@ module.exports = class User {
 
   // get by id
   static findById(id) {
-    console.log(id);
     const index = users.findIndex(b => b.id === id);
     if (index === -1) {
       throw new Error('Not Found');

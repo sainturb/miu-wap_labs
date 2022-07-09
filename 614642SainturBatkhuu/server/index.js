@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const productRouter = require('./router/productRouter');
+const orderRouter = require('./router/orderRouter');
 const cartRouter = require('./router/cartRouter');
 const userRouter = require('./router/userRouter');
 const authRouter = require('./router/authRouter');
@@ -25,6 +26,7 @@ app.use('/assets', express.static(path.join(__dirname, 'public', 'images')))
 app.use('/auth', authRouter); // public api
 app.all('/api/*', requireAuthentication);
 app.use('/api/products', productRouter);
+app.use('/api/orders', orderRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/users', userRouter);
 app.use((req, res, next) => res.status(404).send('404'));
