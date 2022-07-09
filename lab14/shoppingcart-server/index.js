@@ -1,21 +1,18 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const bookRouter = require('./books/router')
 
 const app = express();
 
 app.enable('case sensitive routing');
-
+app.use(cors({origin: '*'}))
 app.use(express.json());
 
 app.use('/design', express.static(path.join(__dirname, 'public', 'css')));
 app.use('/script', express.static(path.join(__dirname, 'public', 'js')));
 
 app.use((req, res, next) => next()); // always there to run
-app.get('/', (req, res, next) => res.status(200).sendFile(path.join(__dirname, 'views', 'home.html'))); // initial page, delete page
-app.get('/add', (req, res, next) => res.status(200).sendFile(path.join(__dirname, 'views', 'add.html'))); // add page
-app.get('/update', (req, res, next) => res.status(200).sendFile(path.join(__dirname, 'views', 'update.html'))); // update page
-app.get('/get', (req, res, next) => res.status(200).sendFile(path.join(__dirname, 'views', 'get.html'))); // get page
 app.use('/books', bookRouter);
 
 app.use((req, res, next) => {
