@@ -24,7 +24,7 @@ module.exports = class Order {
     const orderedDate = new Date();
     if (cartItems.length > 0) {
       cartItems.forEach(item => {
-        Cart.deleteFromCart(user, item.prodId);
+        Cart.deleteFromCart(user, item.prodId); // delete from cart without changin the stock
         orders.push({ ...item, id: this.generateId().toString(), orderedDate, orderNumber }); // add it to orders
       });
       return orders.filter(o => o.user === user);
