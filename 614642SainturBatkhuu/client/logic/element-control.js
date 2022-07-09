@@ -15,7 +15,7 @@ var fillProductRow = (product) => {
   tr = addColumnValue(tr, product.name);
   tr = addColumnValue(tr, product.price.toFixed(2));
   tr = addColumnValue(tr, product.stock);
-  tr = addColumnButton(tr, 'Add to cart', getAddToCartButton(product));
+  tr = addColumnButton(tr, 'Add to cart', product);
   tr.id = `product-${product.prodId}`;
   return tr;
 }
@@ -31,6 +31,16 @@ var fillCartTable = (items) => {
   items.forEach(item => body.appendChild(fillCartRow(item)))
   updateTotal();
 }
+// fill product row
+var fillCartRow = (item) => {
+  let tr = document.createElement('tr');
+  tr = addColumnValue(tr, item.name);
+  tr = addColumnValue(tr, item.price.toFixed(2));
+  tr = addColumnValue(tr, item.total.toFixed(2));
+  tr = addColumnQuantity(tr, item);
+  tr.id = `item-${item.prodId}`;
+  return tr;
+}
 // show cart elements
 var showCartElements = () => {
   document.getElementById('cart-message').innerText = '';
@@ -41,16 +51,6 @@ var showCartElements = () => {
 var hideCartElements = () => {
   document.getElementById('cart-table').style.display = 'none';
   document.getElementById('place-order').style.display = 'none';
-}
-// fill product row
-var fillCartRow = (item) => {
-  let tr = document.createElement('tr');
-  tr = addColumnValue(tr, item.name);
-  tr = addColumnValue(tr, item.price.toFixed(2));
-  tr = addColumnValue(tr, item.total.toFixed(2));
-  tr = addColumnQuantity(tr, item.quantity, getMinusQuantityButton(item), getAddQuantityButton(item));
-  tr.id = `item-${item.prodId}`;
-  return tr;
 }
 // add text to td
 var addColumnValue = (tr, value) => {
@@ -69,61 +69,32 @@ var addColumnImage = (tr, asset) => {
   return tr;
 }
 // add button to td
-var addColumnButton = (tr, label, func) => {
+var addColumnButton = (tr, label, product) => {
   const td = document.createElement('td');
   const button = document.createElement('button');
   button.innerText = label;
-  button.onclick = func;
+  button.onclick = () => addButton.call(product);
   td.appendChild(button);
   tr.appendChild(td);
   return tr;
 }
 // add quantity to td
-var addColumnQuantity = (tr, value, minusFunc, addFunc) => {
+var addColumnQuantity = (tr, item) => {
   const td = document.createElement('td');
   const minus = document.createElement('button');
   const input = document.createElement('input');
   const add = document.createElement('button');
   td.className = 'action-number'
   minus.innerText = '-';
-  minus.onclick = minusFunc;
-  input.value = value;
+  minus.onclick = () => quantityMinus.call(item);
+  input.value = item.quantity;
   add.innerText = '+';
-  add.onclick = addFunc;
+  add.onclick = () => quantityAdd.call(item);
   td.appendChild(minus);
   td.appendChild(input);
   td.appendChild(add);
   tr.appendChild(td);
   return tr;
-}
-// add to cart button
-var getAddToCartButton = (product) => {
-  return function () {
-    // TO-DO add to cart check if exist already
-    if (document.getElementById(`item-${product.prodId}`)) {
-      alert('already added');
-    } else {
-      addToCart(token, user.id, product.prodId).then(response => {
-        if (response.error) {
-          alert(response.error);
-        } else {
-          stockReducer(product.prodId);
-          const item = {
-            prodId: product.prodId,
-            user: user.id,
-            name: product.name,
-            price: product.price,
-            total: product.price * 1,
-            quantity: 1
-          };
-          const body = document.getElementById('cart-items');
-          body.appendChild(fillCartRow(item));
-          showCartElements();
-          updateTotal();
-        }
-      });
-    }
-  }
 }
 // stock +
 var stockIncreaser = (prodId) => {
@@ -147,64 +118,87 @@ var removeAllFromCart = () => {
     document.getElementById('cart-message').innerText = 'There is no item in your shopping cart';
   }, 5000)
 }
-// 
-var getRemoveFromCartButton = (prodId) => {
-  return function () {}
-}
 // remove row from cart
 var removeElementFromCart = (prodId) => {
   const parent = document.getElementById(`item-${prodId}`).parentNode;
   parent.removeChild(document.getElementById(`item-${prodId}`));
 }
+// add to cart button
+var addButton = function () {
+  // console.log(product);
+  console.log(this);
+  // return function () {
+  // TO-DO add to cart check if exist already
+  if (document.getElementById(`item-${this.prodId}`)) {
+    alert('already added');
+  } else {
+    addToCart(token, user.id, this.prodId).then(response => {
+      if (response.error) {
+        alert(response.error);
+      } else {
+        stockReducer(this.prodId);
+        const item = {
+          prodId: this.prodId,
+          user: user.id,
+          name: this.name,
+          price: this.price,
+          total: this.price * 1,
+          quantity: 1
+        };
+        const body = document.getElementById('cart-items');
+        body.appendChild(fillCartRow(item));
+        showCartElements();
+        updateTotal();
+      }
+    });
+  }
+  // }
+}
 // add quantity item in cart
-var getAddQuantityButton = (item) => {
-  return function () {
-    addQuantity(token, item.user, item.prodId)
-      .then(response => {
-        if (response.error) {
-          alert('Stock unavailable');
-        } else {
-          const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
-          const td = document.getElementById(`item-${item.prodId}`).children.item(3);
-          const price = document.getElementById(`item-${item.prodId}`).children.item(2);
+var quantityAdd = function () {
+  addQuantity(token, this.user, this.prodId)
+    .then(response => {
+      if (response.error) {
+        alert('Stock unavailable');
+      } else {
+        const updated = response.find(i => i.user.toString() === this.user.toString() && i.prodId === this.prodId)
+        const td = document.getElementById(`item-${this.prodId}`).children.item(3);
+        const price = document.getElementById(`item-${this.prodId}`).children.item(2);
+        price.innerText = updated.total.toFixed(2);;
+        const input = td.children.item(1);
+        input.value = updated.quantity;
+        stockReducer(this.prodId);
+      }
+      updateTotal();
+    })
+}
+// add quantity item in cart
+var quantityMinus = function () {
+  minusQuantity(token, this.user, this.prodId)
+    .then(response => {
+      if (response.length === 0) {
+        stockIncreaser(this.prodId)
+        removeElementFromCart(this.prodId)
+        document.getElementById('cart-message').innerText = 'There is no item in your shopping cart';
+        hideCartElements();
+      } else {
+        const updated = response.find(i => i.user.toString() === this.user.toString() && i.prodId === this.prodId)
+        if (updated) {
+          const td = document.getElementById(`item-${this.prodId}`).children.item(3);
+          const price = document.getElementById(`item-${this.prodId}`).children.item(2);
           price.innerText = updated.total.toFixed(2);;
           const input = td.children.item(1);
           input.value = updated.quantity;
-          stockReducer(item.prodId);
-        }
-        updateTotal();
-      })
-  }
-}
-// add quantity item in cart
-var getMinusQuantityButton = (item) => {
-  return function () {
-    minusQuantity(token, item.user, item.prodId)
-      .then(response => {
-        if (response.length === 0) {
-          stockIncreaser(item.prodId)
-          removeElementFromCart(item.prodId)
-          document.getElementById('cart-message').innerText = 'There is no item in your shopping cart';
-          hideCartElements();
+          stockIncreaser(this.prodId)
         } else {
-          const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
-          if (updated) {
-            const td = document.getElementById(`item-${item.prodId}`).children.item(3);
-            const price = document.getElementById(`item-${item.prodId}`).children.item(2);
-            price.innerText = updated.total.toFixed(2);;
-            const input = td.children.item(1);
-            input.value = updated.quantity;
-            stockIncreaser(item.prodId)
-          } else {
-            stockIncreaser(item.prodId)
-            removeElementFromCart(item.prodId)
-          }
+          stockIncreaser(this.prodId)
+          removeElementFromCart(this.prodId)
         }
-        updateTotal();
-      });
-  }
+      }
+      updateTotal();
+    });
 }
-
+// update total price
 var updateTotal = () => {
   const body = document.getElementById('cart-items');
   let total = 0;
