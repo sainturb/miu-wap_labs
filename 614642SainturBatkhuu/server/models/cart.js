@@ -54,6 +54,9 @@ module.exports = class Cart {
   static addQuantity(user, prodId) {
     const product = Product.findById(prodId);
     const i = cart.findIndex(c => c.user === user && c.prodId === prodId);
+    if (i === -1) {
+      throw new Error('No such item');
+    }
     if (cart[i].quantity < product.stock) {
       cart[i].quantity++;
       cart[i].total = cart[i].price * cart[i].quantity;
@@ -65,6 +68,9 @@ module.exports = class Cart {
 
   static minusQuantity(user, prodId) {
     const i = cart.findIndex(c => c.user === user && c.prodId === prodId);
+     if (i === -1) {
+      throw new Error('No such item');
+    }
     if (cart[i].quantity > 1) {
       cart[i].quantity--;
       cart[i].total = cart[i].price * cart[i].quantity;

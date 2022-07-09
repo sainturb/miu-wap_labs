@@ -93,6 +93,7 @@ var addColumnQuantity = (tr, item) => {
   minus.innerText = '-';
   minus.onclick = () => quantityMinus.call(item);
   input.value = item.quantity;
+  input.readOnly = true;
   add.innerText = '+';
   add.onclick = () => quantityAdd.call(item);
   div.appendChild(minus);
