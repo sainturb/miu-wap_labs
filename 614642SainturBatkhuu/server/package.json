@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "export PORT=4000 && export NODE_ENV=development && nodemon app.js"
   },
-  "author": "Saintur",
+  "author": "Saintur Batkhuu",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
