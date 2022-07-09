@@ -9,7 +9,13 @@ let users = [{
   username: 'tester',
   firstname: 'Test',
   lastname: 'User',
-  password: '987654321'
+  password: '1234'
+}, {
+  id: '3',
+  username: 'user',
+  firstname: 'John',
+  lastname: 'Doe',
+  password: '1234'
 }];
 module.exports = class User {
 
