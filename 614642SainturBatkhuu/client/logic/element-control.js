@@ -47,7 +47,7 @@ var fillCartRow = (item) => {
   tr = addColumnValue(tr, item.name);
   tr = addColumnValue(tr, item.price);
   tr = addColumnValue(tr, item.total);
-  tr = addColumnValue(tr, item.quantity);
+  tr = addColumnQuantity(tr, item.quantity, getMinusQuantityButton(item), getAddQuantityButton(item));
   tr.id = `item-${item.prodId}`;
   return tr;
 }
@@ -77,22 +77,39 @@ var addColumnButton = (tr, label, func) => {
   tr.appendChild(td);
   return tr;
 }
+// add quantity to td
+var addColumnQuantity = (tr, value, minusFunc, addFunc) => {
+  const td = document.createElement('td');
+  const minus = document.createElement('button');
+  const input = document.createElement('input');
+  const add = document.createElement('button');
+  td.className = 'action-number'
+  minus.innerText = '-';
+  minus.onclick = minusFunc;
+  input.value = value;
+  add.innerText = '+';
+  add.onclick = addFunc;
+  td.appendChild(minus);
+  td.appendChild(input);
+  td.appendChild(add);
+  tr.appendChild(td);
+  return tr;
+}
 // add to cart button
 var getAddToCartButton = (product) => {
   return function () {
-    console.log('add', product);
     // TO-DO add to cart check if exist already
     if (document.getElementById(`item-${product.prodId}`)) {
       alert('already added');
     } else {
-      console.log(token);
       addToCart(token, user.id, product.prodId).then(response => {
         if (response.error) {
-          
+
         } else {
-          stockReducer(product);
+          stockReducer(product.prodId);
           const item = {
             prodId: product.prodId,
+            user: user.id,
             name: product.name,
             price: product.price,
             total: product.price * 1,
@@ -106,28 +123,64 @@ var getAddToCartButton = (product) => {
     }
   }
 }
-
-var stockIncreaser = (product) => {
-  const td = document.getElementById(`product-${product.prodId}`).children.item(3);
-  td.innerText = ++product.stock;
+// stock +
+var stockIncreaser = (prodId) => {
+  const td = document.getElementById(`product-${prodId}`).children.item(3);
+  td.innerText = ++td.innerText;
 }
-
-var stockReducer = (product) => {
-  const td = document.getElementById(`product-${product.prodId}`).children.item(3);
-  td.innerText = --product.stock;
+// stock -
+var stockReducer = (prodId) => {
+  const td = document.getElementById(`product-${prodId}`).children.item(3);
+  td.innerText = --td.innerText;
 }
-
-var getRemoveFromCartButton = (product) => {
+// 
+var getRemoveFromCartButton = (prodId) => {
+  return function () {}
+}
+// remove row from cart
+var removeElementFromCart = (prodId) => {
+  const parent = document.getElementById(`item-${prodId}`).parentNode;
+  parent.removeChild(document.getElementById(`item-${prodId}`));
+}
+// add quantity item in cart
+var getAddQuantityButton = (item) => {
   return function () {
-    console.log('remove', product);
-
+    addQuantity(token, item.user, item.prodId)
+      .then(response => {
+        const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
+        const td = document.getElementById(`item-${item.prodId}`).children.item(3);
+        const price = document.getElementById(`item-${item.prodId}`).children.item(2);
+        price.innerText = updated.total;
+        const input = td.children.item(1);
+        input.value = updated.quantity;
+        stockReducer(item.prodId)
+      })
   }
 }
-
-var getAddQuantityButton = (item) => {
-
-}
-
+// add quantity item in cart
 var getMinusQuantityButton = (item) => {
-
+  return function () {
+    minusQuantity(token, item.user, item.prodId)
+      .then(response => {
+        if (response.length === 0) {
+          stockIncreaser(item.prodId)
+          removeElementFromCart(item.prodId)
+          document.getElementById('cart-message').innerText = 'There is no item in your shopping cart';
+          hideCartElements();
+        } else {
+          const updated = response.find(i => i.user.toString() === item.user.toString() && i.prodId === item.prodId)
+          if (updated) {
+            const td = document.getElementById(`item-${item.prodId}`).children.item(3);
+            const price = document.getElementById(`item-${item.prodId}`).children.item(2);
+            price.innerText = updated.total;
+            const input = td.children.item(1);
+            input.value = updated.quantity;
+            stockIncreaser(item.prodId)
+          } else {
+            stockIncreaser(item.prodId)
+            removeElementFromCart(item.prodId)
+          }
+        }
+      });
+  }
 }

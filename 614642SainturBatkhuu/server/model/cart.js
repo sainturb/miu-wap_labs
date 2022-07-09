@@ -52,7 +52,6 @@ module.exports = class Cart {
   }
 
   static minusQuantity(user, prodId) {
-    console.log('here')
     const i = cart.findIndex(c => c.user === user && c.prodId === prodId);
     // it will assume it exists because minus button only available when item is in the cart
     if (cart[i].quantity > 1) {

@@ -7,7 +7,6 @@ window.onload = function () {
   if (token) {
     populate(token);
     fetchAllProducts(token);
-    fetchCartItems(token);
   } else {
     location.assign(`${clientURL}/client/index.html`)
   }
