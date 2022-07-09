@@ -66,7 +66,7 @@ module.exports = class Product {
     if (i === -1) {
       throw new Error('Not Found');
     } else {
-      if (products[i].stock > 0) {
+      if (products[i].stock >= quantity) {
         products[i].stock -= quantity;
       } else {
         throw new Error('Stock limit is exceeded');

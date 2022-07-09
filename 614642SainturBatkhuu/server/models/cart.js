@@ -15,19 +15,21 @@ module.exports = class Cart {
   static addToCart(user, prodId) {
     const item = this.ifExist(user, prodId);
     const product = Product.findById(prodId);
+    if (product.stock === 0) {
+      throw new Error('Stock limit is exceeded');
+    }
     if (item) {
       throw new Error('Already added item');
-    } else {
-      cart.push({
-        user,
-        prodId: product.prodId,
-        name: product.name,
-        quantity: 1,
-        price: product.price,
-        total: product.price * 1
-      })
-      return cart.filter(c => c.user === user);
     }
+    cart.push({
+      user,
+      prodId: product.prodId,
+      name: product.name,
+      quantity: 1,
+      price: product.price,
+      total: product.price * 1
+    })
+    return cart.filter(c => c.user === user);
   }
 
   static removeFromCart(user, prodId) {
