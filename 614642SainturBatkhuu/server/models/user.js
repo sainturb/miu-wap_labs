@@ -71,15 +71,18 @@ module.exports = class User {
     }
   }
 
-  static generateToken() {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < 32; i++) {
-      result += characters.charAt(Math.floor(Math.random() *
-        charactersLength));
-    }
-    return result;
+  static generateToken(username) {
+    // var result = '';
+    // var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    // var charactersLength = characters.length;
+    // for (var i = 0; i < 32; i++) {
+    //   result += characters.charAt(Math.floor(Math.random() *
+    //     charactersLength));
+    // }
+    // return result;
+    var date = new Date().toISOString();
+    var result = `${username}${date}`;
+    return btoa(result);
   }
 
   static login(username, password) {
@@ -89,7 +92,7 @@ module.exports = class User {
     }
     const found = foundUsers.find(u => u.password === password);
     if (found) {
-      const token = this.generateToken();
+      const token = this.generateToken(username);
       tokens[token] = found; // add token
       return token;
     } else {
