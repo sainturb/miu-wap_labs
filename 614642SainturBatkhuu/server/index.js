@@ -43,9 +43,14 @@ app.use((err, req, res, next) => {
 // app listen
 app.listen(port, () => { console.log('listening on ' + port) });
 function requireAuthentication (req, res, next) {
-  if (req.headers.authorization && auth.isValidToken(req.headers.authorization)) {
+  if (req.headers.authorization) {
     next();
   } else {
     throw new Error('Unauthorized')
   }
+}
+
+function isValidToken(token) {
+  const str = Buffer.toString(token);
+  return str.split(':').length === 2
 }
