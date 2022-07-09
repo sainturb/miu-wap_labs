@@ -12,7 +12,6 @@ let users = [{
   password: '987654321'
 }];
 let tokens = {};
-
 module.exports = class User {
 
   constructor(id, username, password, firstname, lastname) {
@@ -108,5 +107,9 @@ module.exports = class User {
     } else {
       throw new Error(`Access denied`);
     }
+  }
+
+  static isValidToken(token) {
+    return tokens[token] ? true : false;
   }
 }

@@ -6,6 +6,7 @@ const orderRouter = require('./router/orderRouter');
 const cartRouter = require('./router/cartRouter');
 const userRouter = require('./router/userRouter');
 const authRouter = require('./router/authRouter');
+const auth = require('./model/user');
 // app variables
 const app = express();
 const port = process.env.PORT || 3000
@@ -42,7 +43,7 @@ app.use((err, req, res, next) => {
 // app listen
 app.listen(port, () => { console.log('listening on ' + port) });
 function requireAuthentication (req, res, next) {
-  if (req.headers.authorization) {
+  if (req.headers.authorization && auth.isValidToken(req.headers.authorization)) {
     next();
   } else {
     throw new Error('Unauthorized')
