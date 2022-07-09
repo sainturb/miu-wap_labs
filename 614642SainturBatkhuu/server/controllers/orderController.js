@@ -1,4 +1,4 @@
-const Order = require('../model/order');
+const Order = require('../models/order');
 
 exports.all = (req, res, next) => {
   res.status(200).json(Order.fetchAll(req.query.user));

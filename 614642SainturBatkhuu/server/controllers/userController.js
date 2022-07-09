@@ -1,4 +1,4 @@
-const User = require('../model/user');
+const User = require('../models/user');
 
 exports.all = (req, res, next) => {
   res.status(200).json(User.fetchAll());

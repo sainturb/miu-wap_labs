@@ -1,6 +1,6 @@
 let cart = [];
 
-const Product = require('../model/product');
+const Product = require('../models/product');
 
 module.exports = class Cart {
 

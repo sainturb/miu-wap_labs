@@ -1,12 +1,12 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const productRouter = require('./router/productRouter');
-const orderRouter = require('./router/orderRouter');
-const cartRouter = require('./router/cartRouter');
-const userRouter = require('./router/userRouter');
-const authRouter = require('./router/authRouter');
-const auth = require('./model/user');
+const productRouter = require('./routes/productRouter');
+const orderRouter = require('./routes/orderRouter');
+const cartRouter = require('./routes/cartRouter');
+const userRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
+const auth = require('./models/user');
 // app variables
 const app = express();
 const port = process.env.PORT || 3000
