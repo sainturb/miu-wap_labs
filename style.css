@@ -1,40 +1,32 @@
 @font-face {
   font-family: 'SF-Pro';
-  src: url('fonts/SF-Pro-Display-Bold.otf');
+  src: url('fonts/SFProText-Heavy.ttf');
   font-weight: 800;
 }
 
 @font-face {
   font-family: 'SF-Pro';
-  src: url('fonts/SF-Pro-Display-Medium.otf');
+  src: url('fonts/SFProText-Bold.ttf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'SF-Pro';
-  src: url('fonts/SF-Pro-Display-Regular.otf');
+  src: url('fonts/SFProText-Medium.ttf');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'SF-Pro';
-  src: url('fonts/SF-Pro-Display-Light.otf');
+  src: url('fonts/SFProText-Regular.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'SF-Pro';
-  src: url('fonts/SF-Pro-Display-Thin.otf');
+  src: url('fonts/SFProText-Light.ttf');
   font-weight: 400;
 }
-
-
-@font-face {
-  font-family: 'SF-Pro';
-  src: url('fonts/SF-Pro-Display-UltraLight.otf');
-  font-weight: 300;
-}
-
 
 html, body {
   font-family: 'SF-Pro', Roboto;
