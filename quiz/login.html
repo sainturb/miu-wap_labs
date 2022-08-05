@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- get -->
+  <form action="/authenticate">
+    <input type="text" placeholder="username" id="username" name="username"/>
+    <input type="password" placeholder="password" id="password" name="password"/>
+    <input type="submit" value="Login" />
+  </form>
+  <!-- post -->
+  <!-- <div >
+    <input type="text" placeholder="username" id="username" name="username"/>
+    <input type="password" placeholder="password" id="password" name="password"/>
+    <input type="button" value="Login" onclick="onLogin()"/>
+  </form> -->
+  <script>
+    // client logic
+    // function onLogin() {
+    //   const body = {
+    //     username: document.getElementById('username').value,
+    //     password: document.getElementById('password').value
+    //   }
+    //   fetch('http://localhost/authenticate', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(body)
+    //   }).then(response => {
+    //     window.location.href = 'http://localhost/view'
+    //   });
+    // }
+  </script>
+</body>
+</html>

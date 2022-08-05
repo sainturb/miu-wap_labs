@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <select onchange="onChange(event)">
+      <option >Chooose category</option>
+      <option value="Vegetables">Vegetables</option>
+      <option value="Nuts">Nuts</option>
+      <option value="Fruits">Fruits</option>
+      <option value="Legumes">Legumes</option>
+    </select>
+  </div>
+  <script>
+    function onChange(event) {
+      window.location.href = '/check?selected=' + event.target.value;
+    }
+  </script>
+</body>
+</html>
